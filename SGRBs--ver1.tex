@@ -1,0 +1,438 @@
+\begin{checkit}
+This work is based on \cite{Paul-2018-MNRAS--short}. I sincerely thank Professor A R Rao for providing the motivation for the work; Professor Patrick Dasgupta for discussions on GRBs throughout the course of the work; \AS -CZTI member Vidushi Sharma for the updated list of GRBs detected by CZTI and related discussions; Professor Varun Bhalerao, Marek J. Szczepanczyk and Shreya Anand for discussions on the aLIGO/VIRGO sensitivities; Muhammad Saleem for providing simulations of BNSM detections with GW detectors at their designed sensitivities; and the anonymous referee for the critical comments that significantly improved the quality of the work.
+\end{checkit}
+
+
+
+\section{Introduction}
+\label{sec:introduction--SGRBs}
+The observed rate of SGRBs by a GRB-monitor depends on three criterion: (1) the true event rate of SGRBs as a function of intrinsic properties of the population: the redshift and luminosity; (2) the beaming factor of the SGRBs [since GRBs are powered by relativistic jets, the relativistic beaming of the emission reduces the observed rate from the true event rate]; and (3) the observation windows [e.g. mission time, field-of-view] and detection criteria of the GRB monitor. By modelling the intrinsic distribution of the population of SGRBs, one can infer the true event rate of the population, and its possible cosmological evolution.
+
+Several authors have sometimes modelled different observational entities to estimate the true event rate, at other times used different models for the same entity, and most obviously, different databases. For example, \cite{Guetta_and_Piran-2005-A&A} [hereafter \citetalias{Guetta_and_Piran-2005-A&A}], \cite{Guetta_and_Piran-2006-A&A} [hereafter \citetalias{Guetta_and_Piran-2006-A&A}] and \cite{Salvaterra_et_al.-2008-MNRAS} have modelled the observed peak flux distribution of the GRBs detected by the \emph{Compton Gamma Ray Observatory [CGRO]}-\B\, while \cite{Hopman_et_al.-2006-ApJ}, \cite{Guetta_and_Stella-2009-A&A}, \cite{Dietz-2011-A&A} and \cite{Petrillo_et_al.-2013-ApJ} have modelled the distribution of observed redshifts. The latter approach may be severely affected by the detection of only a handful of bursts with redshifts measurements, with the measurement of the redshifts itself being biased towards smaller values via the identification of host galaxies. Such selection biases have been studied and alternative approaches proposed by \cite{D'Avanzo_et_al.-2014-MNRAS} [hereafter \citetalias{D'Avanzo_et_al.-2014-MNRAS}]. On the other hand, \cite{Virgili_et_al.-2011-ApJ} have attempted to fit the peak-flux distribution of both \B\ and \s\ \citep{Barthelmy_et_al.-2005-SSRv-SwiftBAT,Gehrels_et_al.-2004-ApJ} bursts, as well as the observed redshift distribution, while \cite{Wanderman_and_Piran-2015-MNRAS} have used the peak-flux distribution of \B, \s\ and \f -GBM \citep{FermiGBM-2009-ApJ} bursts along with the redshifts distribution. Subsequently, different authors have placed different constraints on the true event rate. While \citetalias{Guetta_and_Piran-2005-A&A} reported the rate in the local universe, $\Rdot(0)$, to be $0.1$-$0.8 \, \pyG$, \citetalias{Guetta_and_Piran-2006-A&A} extended it to be $8$-$ 30 \, \pyG$ with the addition of \s\ and HETE II bursts, and \cite{Coward_et_al.-2012-MNRAS} [hereafter \citetalias{Coward_et_al.-2012-MNRAS}] at $5$-$13 \, \pyG$ from \s\ bursts alone. On the other hand, \cite{Salvaterra_et_al.-2008-MNRAS}, \cite{Virgili_et_al.-2011-ApJ} and \cite{Wanderman_and_Piran-2015-MNRAS} have claimed that progenitors other than compact object mergers are required to model the detected distributions.
+
+The direct modelling of the LF via the luminosity distribution suffers from the fact there are too few GRBs with observed redshifts and hence estimated luminosities, moreover the sample can suffer from heavy selection bias for the redshift measurement. Although \citetalias{D'Avanzo_et_al.-2014-MNRAS} suggested a method of eliminating the selection bias by limiting to a `flux-complete' sample, the number of bursts thus obtained is too low to make direct modelling of the LF meaningful. To get around this problem, the method suggested originally for LGRBs by \citetalias{Yonetoku_et_al.-2004-ApJ} and discussed extensively in Chapter \ref{chap:LGRBs}, was extended by \cite{Yonetoku_et_al.-2014-ApJ}  [hereafter \citetalias{Yonetoku_et_al.-2014-ApJ}] on SGRBs, using the so-called `Yonetoku correlation' found by \cite{Tsutsui_et_al.-2013-MNRAS} [hereafter \citetalias{Tsutsui_et_al.-2013-MNRAS}] for eight SGRBs. They used $72$ \B\ SGRBs whose spectra were modelled by the Band function, concluding that the LF is consistent with a simple powerlaw with an index of unity, and $\Rdot(0)$ in the range $0.24$-$0.94 \, \pyG$.
+
+\cite{Ghirlanda_et_al.-2016-A&A} [hereafter \citetalias{Ghirlanda_et_al.-2016-A&A}] did an extensive study of the distributions of four observed parameters of \s\ and \f\ bursts, namely the peak flux, fluence, observer frame duration and the observer frame peak energy, and also the distributions of redshift, isotropic energy and isotropic luminosity of a `flux-complete' sample of \s\ bursts presented by \citetalias{D'Avanzo_et_al.-2014-MNRAS}. In doing so, they assumed the validity of the Yonetoku as well as the Amati correlations, whose parameters were included in the model. Contradictory to \citetalias{Yonetoku_et_al.-2014-ApJ}, they concluded that the LF is inconsistent with a simple powerlaw function, and fitted a broken powerlaw with a constant break luminosity, combined with different distributions of the formation rate of the SGRB progenitors. They reported $\Rdot(0) \simeq 0.13$-$0.24 \, \pyG$ and $\Rdot(0) \simeq 0.65$-$1.1 \, \pyG$ for the two fitted models.
+
+In this work, I have applied the method followed by \citetalias{Yonetoku_et_al.-2014-ApJ} to model the luminosity distribution of the full sample of SGRBs detected by \B, \f, and \s\ till October, 2017. This is made possible by using the simplification proposed for LGRBs in Chapter \ref{chap:LGRBs}: instead of modelling the spectra of each individual GRB accurately, they are statistically sampled from the true distribution as observed for \f -GRBs, utilizing the wideband information available for \f -GBM. I have then used the fitted models to calculate the true event rate of the SGRBs, and assuming that they are produced from binary neutron star [henceforth NS] mergers, deduced the rate of electromagnetic counterparts of gravitational wave events to which the GW detectors are sensitive in their different observing phases \citep{Abbott_et_al.-2016-review}. This work simplifies the understanding of the SGRB production scenario significantly over previous works who carry out general numerical studies of all the parameters in the problem. In assuming inputs from the star formation history of the universe and population synthesis models, and  resorting to direct observations wherever applicable [e.g. the Yonetoku correlation data and the \f\ spectral parameter observations], it considerably simplifies the numerical framework and demonstrates that robust statements about the physical scenario can be made nonetheless.
+
+This chapter is organized as follows. The validity of the Yonetoku correlation is investigated in Section \ref{subsec:Yonetoku_correlation--short}, the generation of the luminosity of all SGRBs is described in Section \ref{subsec:L-z_data_generation--short}, the modelling of the LF is detailed in Section \ref{subsec:modelling_LF--short}. In Section \ref{sec:local_SGRB_rate}, the local GRB rate is inferred from the models. In Section \ref{sec:predictions--short}, predictions are made for \AS -CZTI [Section \ref{subsec:predictions_for_CZTI--short}] and \D\ [Section \ref{subsec:predictions_for_Daksha--short}]. The true SGRB rate is derived via the derived models, and extrapolated to derive the BNSM rate, in Section \ref{sec:Events_rate}. In Section \ref{sec:conclusions--SGRBs}, concluding remarks are presented. All the catalogue data, scripts used and important databases generated in this chapter are publicly available \href{https://github.com/DebduttaPaul/luminosity_function_of_SGRBs}{here}.
+
+
+\begin{table}
+\caption[Catalogue of short GRBs with both redshift and spectral parameters]{The catalogue of $15$ short GRBs with well-measured redshift and spectral parameters, defined as $\T < 2.0$ s. The spectral peak given here refers to that in the source frame. Data taken from: [1] \citetalias{Tsutsui_et_al.-2013-MNRAS}, [2] \cite{Paul-2018-MNRAS--long}, [3] \citetalias{D'Avanzo_et_al.-2014-MNRAS}, and references therein.}
+\label{tab:short_catalogue}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+GRB name & $\T$ & $z$ & $\Eps$ & $\Lp$ & reference \\
+ & [s] &  & [keV] & [$10^{50} \, \ergpersec$] & \\
+\hline
+\hline
+040924 & $1.51$ & $0.86$ & ${124.55}^{+11.15}_{-11.15}$ & $228^{+25}_{-24}$ & 1 \\
+\hline
+050709 & $0.70$ & $0.16$ & ${97.32}^{+7.76}_{-0.58}$ & $7.51^{+0.76}_{-0.81}$ & 1 \\
+\hline
+051221A & $1.41$ & $0.55$ & ${621.69}^{+87.42}_{-67.69}$ & $277^{+29}_{-29}$ & 1 \\
+\hline
+061006 & $0.50$ & $0.44$ & ${954.63}^{+198.39}_{-125.86}$ & $206^{+15}_{-31}$ & 1 \\
+\hline
+070714B & $2.00$ & $0.92$ & ${2150.40}^{+910.39}_{-443.52}$ & $656^{+79}_{-136}$ & 1 \\
+\hline
+080905A & $0.96$ & $0.12$ & ${759.30}^{+308.28}_{-308.28}$ & $1.02^{+1.02}_{-1.02}$ & 2 \\
+\hline
+090510 & $0.30$ & $0.90$ & ${8679.58}^{+947.69}_{-947.69}$ & $10400^{+2400}_{-1400}$ & 1 \\
+\hline
+100117A & $0.31$ & $0.92$ & ${936.96}^{+297.6}_{-297.6}$ & $189^{+21}_{-35}$ & 1 \\
+\hline
+100206 & $0.13$ & $0.41$ & ${638.98}^{+131.21}_{-131.21}$ & $99.8^{+115.0}_{-32.5}$ & 1 \\
+\hline
+100625A & $0.32$ & $0.45$ & ${701.32}^{+114.71}_{-114.71}$ & $34^{+1}_{-1}$ & 3 \\
+\hline
+100816A & $2.00$ & $0.81$ & ${235.36}^{+15.74}_{-15.74}$ & $96.9^{+19.5}_{-12.8}$ & 1 \\
+\hline
+101219A & $0.60$ & $0.72$ & ${841.82}^{+107.56}_{-82.50}$ & $156^{+24}_{-23}$ & 1 \\
+\hline
+111117A & $0.46$ & $1.30$ & ${966.00}^{+322.00}_{-322.00}$ & $404^{+128}_{-128}$ & 3 \\
+\hline
+130603B & $0.09$ & $0.36$ & ${894.96}^{+135.60}_{-135.60}$ & $435^{+87}_{-87}$ & 3 \\
+\hline
+131004A & $1.15$ & $0.72$ & ${247.22}^{+153.72}_{-153.72}$ & $23.73^{+23.73}_{-23.73}$ & 2 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{L_vs_Ep0--correlations}
+\caption[Yonetoku correlation for short GRBs]{The Yonetoku correlation as seen from the data of $15$ short GRBs with spectral parameters as well as redshift measurement, given in Table \ref{tab:short_catalogue}. $A = 2.04 \pm 0.22$ and $\eta = 1.17 \pm 0.18$ corresponding to Equation \ref{eq:Yonetoku_correlation--long} shows the best fit as the black solid line.}
+\label{fig:Yonetoku_correlation--short}
+\end{center}
+\end{figure}
+
+
+\section{The luminosity function}
+\label{sec:luminosity_function--short}
+
+\subsection{The Yonetoku correlation}
+\label{subsec:Yonetoku_correlation--short}
+The validity of the Yonetoku correlation [Equation \ref{eq:Yonetoku_correlation--long}] is first tested by combining all data from existing literature. The short GRBs are defined as $\T < 2.0$ s, instead of using the duration in the rest frame \citepalias{Tsutsui_et_al.-2013-MNRAS}. This is to be consistent with the general convention followed in the rest of the work, where the full sample without the redshift information are used, making it impossible to classify bursts using only the source-frame criterion. Using this criterion, $15$ GRBs are found in the literature, given in Table \ref{tab:short_catalogue}, plotted on the Yonetoku space in Figure \ref{fig:Yonetoku_correlation--short}. Although the number of sources is small and there are at least three outliers, the correlation is found to be significant: a linear correlation coefficient of $0.98$ is retrieved, and the hypothesis that it is generated from a random distribution is discarded [a probability of $8.9 \times 10^{-11}$]. This also justifies that the effect of outliers on the correlation is not significant, hence possible contamination of the sample by long GRBs, or the effect of missing out a few short GRBs with longer durations in the observer's frame \citep{Zhang_et_al.-2009-ApJ} does not have any effect on the rest of the work.
+
+The best fit to the linear correlation is given by Equation \ref{eq:Yonetoku_correlation--long}, with $A = 2.04 \pm 0.22$ and $\eta = 1.17 \pm 0.18$. The parameters obtained by \citetalias{Tsutsui_et_al.-2013-MNRAS}, with the presently-defined normalization, are given by $A = 2.93^{+0.57}_{-0.48}$ and $\eta = 1.59 \pm 0.11$. The results are thus not significantly different, as expected from the fact that the current database includes and extends their dataset.
+
+
+
+\subsection{Generating the luminosity data}
+\label{subsec:L-z_data_generation--short}
+To model the LF of SGRBs, their luminosities are required for a large sample. In this work, the Yonetoku method of estimating luminosities via the pseudo-redshifts from the Yonetoku correlation is extended to include all SGRBs available in the catalogues of \emph{CGRO}-\B\ \citep{BATSE_catalogue--1997}\footnote{\url{https://heasarc.gsfc.nasa.gov/W3Browse/all/batsegrb.html}}, \s -BAT\footnote{\url{https://swift.gsfc.nasa.gov/archive/grb_table/}}, and \f -GBM \citep{Fermi_catalgoue--2016-ApJS}\footnote{\url{https://heasarc.gsfc.nasa.gov/W3Browse/fermi/fermigbrst.html}}. As before, the distinction between the short and long bursts is drawn at $\lessgtr 2$ seconds, and a total of $757$ GRBs are thus available up to GRB171025913 [\f\ nomenclature].
+
+Since the operational time of \B\ and the later missions are mutually exclusive, there is no \B\ GRB that is coincident with \s\ and \f. However, the latter two missions do have a small but significant number of coincidence, see Chapter \ref{chap:LGRBs}, and the same method is followed for identifying them. As before, all bursts which are detected by both the instruments but do not have redshift measurements, are treated as \f\ GRBs and included in the \f\ dataset for the modelling, i.e. the corresponding $k(z)$ [see below] and $L_c (z)$ are used. For the exclusively \f -bursts, the ones with spectral parameters available in the catalogue are referred to as Type I, while the ones without them as Type II. For the latter, pseudo redshifts are generated similar to that of all other \B\ and \s\ bursts. The number of bursts thus available for generating pseudo redshifts are given in Table \ref{tab:pseudo_numbers--short}. The total number of \s\ bursts with available redshifts, with or without spectral parameters and including those in Table \ref{tab:short_catalogue}, is $30$. Since the modelling for each mission needs to be carried out separately due to the difference in $L_c (z)$ [see Equation \ref{eq:definition_of_phi}], the total number available for each mission for this purpose are given separately in Table \ref{tab:GRBs_used_for_modelling_LF--short}.
+
+\begin{table}
+\caption[Categories of short GRBs with pseudo redshift]{The number of SGRBs for which pseudo-redshifts are estimated, for each mission. For both \B\ and \s, the spectral parameters are not available in the catalogues. The \f\ catalogue however contains SGRBs with both Band function parameters estimated, and otherwise; the classification of \f -bursts is explained in Section \ref{subsec:L-z_data_generation--short} and are plotted separately in Figure \ref{fig:L-z--short}.}
+\label{tab:pseudo_numbers--short}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+mission & spectral parameters available & number \\
+\hline 
+\hline 
+\B &  no & $468$ \\
+\hline 
+\multirow{2}{*}{\f} & yes, Type I & $188$ \\
+\cline{2-3} 
+ & no, Type II & $21$ \\
+\hline 
+\s &  no & $59$ \\
+\hline
+\hline
+TOTAL & & $736$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption[Categories of short GRBs used for modelling LF]{The number of SGRBs available for each mission. See Table \ref{tab:pseudo_numbers--short} for the classification of GRBs with pseudo redshifts. The nomenclature here also corresponds to the $k$-correction used for the calculation of the luminosities as well as the selection thresholds, $L_{c} (z)$ [Equation \ref{eq:definition_of_phi} and Figure \ref{fig:L-z--short}].
+\label{tab:GRBs_used_for_modelling_LF--short}}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+mission & redshift & number \\
+\hline
+\hline
+\B &  pseudo & $468$ \\
+\hline
+\multirow{2}{*}{\f} & pseudo & $209$ \\
+\cline{2-3} 
+ & measured & $2$ \\
+\hline
+\multirow{2}{*}{\s} & pseudo & $59$ \\
+\cline{2-3}
+ & measured & $19$ \\
+\hline
+\hline
+TOTAL & & $757$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{redshift_distributions--cumulative}
+\includegraphics[scale=0.42]{redshift_distributions--cumulative--truncated}
+\caption[Cumulative distribution of measured and pseudo redshifts]{The cumulative distribution of redshifts. The distribution from the $30$ GRBs with known redshifts, including the $15$ given in Table \ref{tab:short_catalogue}, is plotted in black. The pseudo redshifts derived for \B, \f\ and \s\ GRBs are shown in [yellow] dashed,  [red] dot-dashed and [blue] dotted lines respectively. \eL: The full range used for modelling the luminosity function. The 2-sample KS test rules out the hypothesis that the pseudo redshifts are derived from the same distribution as that of the known redshifts. However, the number of GRBs with known redshifts being very small [$30$], this may be due to the instrumental selection effect in redshift measurement. \eR: The same distribution truncated at a redshift of $1.0$, below which $25$ of the GRBs with measured redshifts are located. The KS test cannot rule out that all the curves are drawn from the same distribution up to at least this redshift, upto a high degree of confidence.}
+\label{fig:z_distribution--short}
+\end{center}
+\end{figure}
+
+
+\cite{Bromberg_et_al.-2013-ApJ} has pointed out that $\lessgtr 0.8$ seconds is a better classifier for \s\ GRBs, and \cite{Wanderman_and_Piran-2015-MNRAS} has supported this claim from their independent study. To estimate the effect of using this classification scheme for \s\ GRBs used in this work, I have carried out the generation of the pseudo redshifts and estimated the corresponding luminosity distribution [see below] for both the \s\ and \f\ GRBs, similar to the data plotted in Figure \ref{fig:data-vs-model}. Executing the 2-sample KS-test on the two luminosity datasets thus generated for each of \s\ and \f\ separately, it is observed that a probability of them being drawn from the same sample is very close to unity [upto nine places after the decimal] in both cases. Hence, the different classification scheme has no bearing on the modelling of the LF and the conclusions about the event rate of SGRBs and BNSMs. This is an advantage of using a method that is only reliable in the statistical sense, as discussed below.
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{L_vs_z--Fermi_short_all}
+\includegraphics[scale=0.42]{L_vs_z--BATSE_short_all}
+\caption[Luminosity versus redshift of all short GRBs]{The $L$-$z$ distributions. The dashed curves give the instrumental sensitivity limits, $L_c (z)$ for the respective instruments, see text below Equation \ref{eq:definition_of_phi}. \eL: For \f; in red [diamond] are the two GRBs with redshift measurement from \s, in [black] dot and [blue] plus are those with pseudo redshifts measured from the Yonetoku correlation, with [Type I, black-dot] and without [Type II, blue-plus] spectral parameters available in the \f\ catalogue [see Section \ref{subsec:L-z_data_generation--short} for the classification and Table \ref{tab:pseudo_numbers--short} for the corresponding numbers]. \eR: Pseudo-redshifts estimated for all \B\ GRBs.}
+\label{fig:L-z--short}
+\end{center}
+\end{figure}
+
+
+
+For all GRBs for which spectral parameter measurements are not available, the spectral energy peak $\Ep$ is randomly sampled from that of the observed distribution of \f\ GRBs with spectral measurements, following the example set by LGRBs in Chapter \ref{chap:LGRBs}. The sample of \f\ bursts are again found to have a log-normal distribution of $\Ep$, with $<\Ep> = 382.8$ keV; moreover, $<\alpha> = -0.2$ and $<\beta> = -3.5$. The justification behind this is the same as in the case of LGRBs: \f -GBM being a wide-band GRB detector, samples the $\Ep$ space without any selection bias. This is evident from the fact that the $k(z)$ for \f\ deviates significantly from unity only at very high redshifts [Figure \ref{fig:k-correction--long}] where the formation rate of GRBs is itself extremely low due to the absence of the progenitors. Hence, the spectral parameter distribution of \f -GRBs is representative of the true GRB population. By randomly selecting $\Ep$ from the observed distribution of \f\ bursts, the true distribution of $\Ep$ of bursts is being sampled, and there is no need to additionally model this distribution. In doing so, no claim to the accuracy of the individual values of $\Ep$ is claimed, and hence neither in the individual values of pseudo-redshifts. This approach thus assigns pseudo-redshifts to bursts only in the statistical sense. This limitation is however not binding to this work, since luminosities of the bursts estimated from these pseudo-redshifts are used only as a collective sample in modelling the LF.
+
+The number of SGRBs with known redshift and spectral parameters is only $15$. Hence, to test the hypothesis that the estimated pseudo-redshifts are indeed representative of the whole sample, I compare the cumulative distribution of the pseudo-redshifts thus derived for each of the instruments to that of the measured redshifts of a total of $30$ SGRBs, with or without spectral parameters. The 2-sample KS test rules out the hypothesis that any of the pseudo-redshift distributions are drawn from the known redshift population when the full range of redshifts is considered, as shown in the left panel of Figure \ref{fig:z_distribution--short}. However, the number of GRBs with observed redshifts is still quite small to draw negative conclusions from this global comparison. The discrepancy can understood to be due to instrumental selection effects that severely limit the detection of GRBs with high redshifts, primarily via the identification of the host galaxy \citep{Berger-2014-sGRB_review}. \citetalias{Yonetoku_et_al.-2014-ApJ} pointed out that the pseudo-redshift distributions matches well with the measured ones from their sample, when both are limited to a redshift of $1.0$. In this work it is found that as many as $25$ of the $30$ GRBs are located within this redshift. Given that the progenitor mass available for the production of SGRBs does not reduce drastically at $z > 1.0$ from population synthesis studies [see Figure \ref{fig:CSFR--short} and Section \ref{subsec:modelling_LF--short}], this is indicative of the fact that selection effects indeed play an important role in the measurement of redshifts of GRBs. When limited to this range, the pseudo-redshift distributions of all the instruments have probabilities $> 0.66$ of being drawn from the same population as the known redshift distribution, see right panel of Figure \ref{fig:z_distribution--short}. Hence the pseudo-redshifts can be safely used to calculate the luminosities for all the bursts with unknown redshifts. The resultant $L$-$z$ distributions of \f\ and \B\ GRBs are shown in Figure \ref{fig:L-z--short}. This approach mitigates the statistical limitation of a sample of redshift-measured bursts, and also the selection bias that plagues the very measurement of redshift. It is to be noted that studies that model the luminosity function considering only the short bursts with measured redshifts, are hence not representative of the true sample.
+
+
+\subsection{Modelling the luminosity function}
+\label{subsec:modelling_LF--short}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{CSFR_delay}
+\caption[The binary coalescence rate]{The cosmic star formation rate taken from \citetalias{Bouwens_et_al.-2015-ApJ}, shown in the black solid line, is convolved with a time-delay distribution [see text] via Equation \ref{eq:CSFR_convolution} to derive the binary coalescence rate for various values of the parameter $n$.}
+\label{fig:CSFR--short}
+\end{center}
+\end{figure}
+
+
+If the SGRB progenitors are produced by coalescences of neutron star [NS] binaries, then assuming that $\Psi(z)$ is the effective mass available for coalescence per unit time per unit volume, it follows the cosmic star formation rate $\csfr(z)$, delayed by a time $\tau$ given by $\tau[z,z'] = t_{\rm{age}}(z) - t_{\rm{age}}(z')$, where $t_{\rm{age}}(z)$ is the age of the universe calculated in the standard way in $\Lambda$-cold dark matter cosmology. If the delay distribution is given by $P(\tau)$, then $\Psi(z)$ at redshift $z$ is given by 
+\begin{equation}
+\Psi(z) = \intop_{z_{\rm{min}}(z)}^{\infty} \csfr(z') \, P\left( \tau[z,z'] \right) \frac{\dd \tau}{\dd z'} \dd z',
+\label{eq:CSFR_convolution}
+\end{equation} where $z_{\rm{min}}(z)$ is obtained on solving $t_{\rm{age}}(z) - t_{\rm{age}}(z_{\rm{min}}) = \tau_{\rm{min}}$. The probability distribution function $P(\tau)$ is normalized over the chosen range of $\tau$, bounded below by $\tau_{\rm{min}}$.
+
+$\Psi(z)$ is shown in Figure \ref{fig:CSFR--short} by convolving the cosmic star formation rate obtained from \citetalias{Bouwens_et_al.-2015-ApJ} with a delay distribution of the form $ P(\tau) \propto \tau^{-n}$, for various values of $n$. A number of population synthesis codes \citep{Schneider_et_al.-2001-MNRAS, Belczynski_et_al.-2006-ApJ, O'Shaughnessy_et_al.-2008-ApJ} have studied the rate of binary coalescences, concluding that the delay distribution is typically well-approximated as $P(\tau) \propto \tau^{-1}$ with $\tau_{\rm{min}} = 10$ Myr. For the rest of the work, I let $n$ vary between $1$, $1.5$ and $2.0$ for the sake of generality, although the delayed rate is relatively insensitive to this variation [see Figure \ref{fig:CSFR--short}]. Variation in the choice of $\tau_{\rm{min}}$ in the same order of magnitude has no significant effect on the convolved rate, $\Psi(z)$.
+
+Whereas \citetalias{Yonetoku_et_al.-2014-ApJ} used only $72$ \B\ GRBs with spectral parameters that they estimated, as a result of sampling the $\Ep$ from the observed distribution of that of \f, I have a large number of bursts available to model the SGRB LF via the luminosities computed via the pseudo redshifts, as discussed before. This approach allows a range of models to be tested and sufficient confidence be placed on the parameters of the bestfit model. Moreover, the $\Ep$ measurements have been directly used for the \f\ GRBs whenever available, whereas \citetalias{Ghirlanda_et_al.-2016-A&A} has used the Yonetoku correlation to model the \f\ $\Ep$-distribution via the LF. In Figure \ref{fig:data-vs-model} is shown the luminosity distribution of all the GRBs from the three instruments, along with one best-fit model [see below]. The total number of GRBs used for the different instruments are tabulated in Table \ref{tab:GRBs_used_for_modelling_LF--short}.
+
+The model fits are carried out via the standard Levenberg-Marquardt algorithm of minimizing the discrepancy defined as $d^2 = (model - data)^{2}$, available in the \textsc{python} library \textbf{scipy}\footnote{\url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html}}.
+
+Attempts are first made to fit a simple powerlaw [SPL] model of the LF, $\Phi_z(L) \propto L^{-\nu}$, with $\nu \in [0.01,10.0]$. Table \ref{tab:SPL_fits--short} lists the reduced chisquared, $\red$, for $10$ degrees of freedom, for the chosen values of $n$. It is clearly seen that this model is ruled out for all three instruments for the whole range of $\nu$ with a high degree of confidence. This rules out the conclusion of \citetalias{Yonetoku_et_al.-2014-ApJ}, who found the LF to be well-described by a simple powerlaw of index $1$, while supporting and extending the conclusion of \citetalias{Ghirlanda_et_al.-2016-A&A}, who ruled out this model with $ \nu > 2.0. $ The large number of GRBs in the present dataset helps in reaching this conclusion.
+
+
+\begin{table}
+\caption[SPL model mismatch]{The best fits to the SPL model and the corresponding reduced chisquared [$\red$], corresponding to $10$ degrees of freedom.}
+\label{tab:SPL_fits--short}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$n$ & parameters & \B & \f & \s \\
+\hline
+\multirow{2}{*}{$1.0$} & $\nu$ & $1.12$ & $1.23$ & $1.37$ \\
+ & $\red$ & $233.1$ & $26.5$ & $10.1$ \\
+\hline
+\multirow{2}{*}{$1.5$} & $\nu$ & $1.10$ & $1.20$ & $1.33$ \\
+ & $\red$ & $276.5$ & $35.4$ & $10.9$ \\
+\hline
+\multirow{2}{*}{$2.0$} & $\nu$ & $1.09$ & $1.18$ & $1.31$ \\
+ & $\red$ & $300.6$ & $39.4$ & $11.2$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption[ECPL model fits]{The best fits to the ECPL model and the corresponding reduced chisquared [$\red$], corresponding to $8$ degrees of freedom. Here, $\Lb$ is given in units of $L_{0} = 10^{52} \, \ergpersec$. The best fits to $\nu$ and $\Lb$ are not provided for the three instruments separately since the same values are applicable to all instruments; whereas $\Gamma$ and $\red$ vary with instruments for the same values for $\nu$ and $\Lb$. The errors refer to $1$-$\sigma$ uncertainties.}
+\label{tab:ECPL_fits--short}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$n$ & parameters &  & \f & \s & \B \\
+\hline
+\multirow{4}{*}{$1.0$} & $\nu$ & $0.71 ^{+0.05} _{-0.36}$ & & & \\
+ & $\Lb$ & $7.42 ^{+7.21} _{-1.96}$ & & & \\
+ & $\Gamma$ & & $0.00$ & $0.00$ & $0.41 ^{+0.15} _{-0.12}$ \\
+ & $\red$ & & $0.31$ & $0.21$ & $0.75$ \\
+\hline
+\multirow{4}{*}{$1.5$} & $\nu$ & $0.64 ^{+0.05} _{-0.39}$ & & & \\
+ & $\Lb$ & $6.84 ^{+6.73} _{-1.58}$ & & & \\ 
+ & $\Gamma$ & & $0.00$ & $0.00$ & $0.38 ^{+0.13} _{-0.10}$ \\
+ & $\red$ & & $0.39$ & $0.19$ & $0.82$ \\
+\hline
+\multirow{4}{*}{$2.0$} & $\nu$ & $0.60 ^{+0.05} _{-0.38}$ & & & \\
+ & $\Lb$ & $6.61 ^{+6.09} _{-1.53}$ & & & \\
+ & $\Gamma$ & & $0.00$ & $0.00$ & $0.36 ^{+0.12} _{-0.09}$ \\
+ & $\red$ & & $0.41$ & $0.19$ & $0.84$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption[BPL model fits]{The best fits to the BPL model and the corresponding reduced chisquared [$\red$], corresponding to $7$ degrees of freedom. Here, $\Lb$ is given in units of $L_{0} = 10^{52}\, \ergpersec$. The best fits to $\nu_1$, $\nu_2$, and $\Lb$ are not provided for the three instruments separately since the same values are applicable to all instruments; whereas $\Gamma$ and $\red$ vary with instruments for the same values for $\nu_1$, $\nu_2$, and $\Lb$. The errors refer to $1$-$\sigma$ uncertainties.}
+\label{tab:BPL_fits--short}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$n$ & parameters &  & \f & \s & \B \\
+\hline
+\multirow{5}{*}{$1.0$} & $\nu_1$ & $0.48 ^{+0.22} _{-0.48}$ & & & \\
+ & $\nu_2$ & $1.86 ^{+1.08} _{-0.20}$ & & & \\
+ & $\Lb$ & $1.52 ^{+1.58} _{-0.67}$ & & & \\
+ & $\Gamma$ & & $0.00$ & $0.00$ & $0.17 ^{+0.05} _{-0.05}$ \\
+ & $\red$ & & $0.10$ & $0.42$ & $1.09$ \\
+\hline
+\multirow{5}{*}{$1.5$} & $\nu_1$ & $0.38 ^{+0.23} _{-0.38}$ & & & \\
+ & $\nu_2$ & $1.85 ^{+1.04} _{-0.19}$ & & & \\
+ & $\Lb$ & $1.46 ^{+1.36} _{-0.62}$ & & & \\ 
+ & $\Gamma$ & & $0.00$ & $0.00$ & $0.16 ^{+0.04} _{-0.05}$ \\
+ & $\red$ & & $0.10$ & $0.39$ & $1.09$ \\
+\hline
+\multirow{5}{*}{$2.0$} & $\nu_1$ & $0.34 ^{+0.23} _{-0.34}$ & & & \\
+ & $\nu_2$ & $1.85 ^{+1.03} _{-0.19}$ & & & \\
+ & $\Lb$ & $1.45 ^{+1.32} _{-0.60}$ & & & \\
+ & $\Gamma$ & & $0.00$ & $0.00$ & $0.15 ^{+0.04} _{-0.05}$ \\
+ & $\red$ & & $0.10$ & $0.39$ & $1.09$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{BPL_model--joint--n=1}
+\caption[Estimated luminosity distributions and model fit]{The error-bars are the data for \B\ [black], \f\ [red] and \s\ [cyan]. It is clearly seen that the \B\ data clearly deviates from the \f\ and \s\ data. The $\Gamma = 0, \; n = 1.0$ BPL model [see Table \ref{tab:BPL_fits--short}] has been plotted as a thick-line, and the bestfit \B\ model with non-zero $\Gamma$ has not been plotted for simplicity. All the plots are normalized to \f; $L_0 = 10^{52} \, \ergpersec$.}
+\label{fig:data-vs-model}
+\end{center}
+\end{figure}
+
+
+Next, the observed distributions are fit to the ECPL [Equation \ref{eq:The_ECPL_model--long}] and BPL [Equation \ref{eq:The_BPL_model--long}] models. It is seen that, although the \f\ and the \s\ data are well fit by both the models, the \B\ data [see Figure \ref{fig:data-vs-model}] is not. This is clearly understood to be due to the fact that the \B\ data is significantly different from the \f\ and the \s\ data, specially at higher luminosities. While writing Equation \ref{eq:definition_of_phi}, it was assumed that the probability of detection of a burst is $0$ below $L_c$ and $1$ above it. However, that may not be the case for all instruments, the change being gradual. This effect can be modelled by introducing a detection probability that is a function of the observed flux $P$, given as $D(P)$, thus modifying Equation \ref{eq:definition_of_phi} to
+
+\begin{equation}
+N(L_1, L_2; z_1, z_2) = T \, \dfrac{\Delta \Omega}{4 \pi} \,
+\intop_{z_1}^{z_2} \dd V
+\intop_{\rm{max}[L_1,\, L_c]}^{L_2} \dd L \; \Phi_z(L) \dfrac{\Rdot(z)}{1+z} \times D(L, z),
+\label{eq:introduction_of_D}
+\end{equation} where $D(L, z) \equiv D(P)$. Assuming
+\begin{equation}
+D(P) \propto P^{\Gamma},
+\label{eq:form_of_D}
+\end{equation} the normalization is defined such that $ \Phi_z(L) \, D(L,z) $ is normalized in the absolute limits. The data is then fit to the model keeping $\Gamma$ as a free parameter for each instrument. It is envisaged that the same set of parameters for $\Phi_z(L)$ describes the data of each instrument, whereas $\Gamma$ itself may be different for the different instruments. That is indeed the case, with $\Gamma$ being consistent with $0$ for both \f\ and \s, whereas non-zero for the \B\ data.
+
+The combined bestfits to the ECPL and BPL models are given in Tables \ref{tab:ECPL_fits--short} and \ref{tab:BPL_fits--short} respectively. It is seen that the low luminosity index [$\nu_1$] of the BPL model is weakly constrained from below, although the other parameters are well constrained. It is noted that the the BPL model fits are consistent with the $68 \%$ confidence intervals quoted for this model by \citetalias{Ghirlanda_et_al.-2016-A&A}, for all three scenarios considered by them. From the current dataset, it is impossible to distinguish between the ECPL and BPL bestfit models, as the relative errors on the luminosity are large due to large propagated errors on the estimated luminosities [$40 \%$ on an average]. Although the break luminosity [$\Lb$] is weakly constrained from above for the ECPL model, the robust lower limits makes it a few times larger as compared to the BPL model, same as in long GRBs \citepalias{Amaral-Rogers_et_al.-2017-MNRAS, Paul-2018-MNRAS--long}.
+
+
+
+\section{The local SGRB rate}
+\label{sec:local_SGRB_rate}
+
+\begin{table}
+\caption[Bestfit normalizations for the models]{The bestfit normalizations for the models. The errors refer to $1$-$\sigma$ uncertainties obtained on propagating the errors in the fitted parameters quoted in Tables \ref{tab:ECPL_fits--short} and \ref{tab:BPL_fits--short}. The range of the local GRB formation rate uncorrected for the beaming factor, $\Rcap(0)$, refers to $68 \%$ confidence limits combining the two models.}
+\label{tab:fBC0_fits--short}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+$n$ & model & $\fB C(0)$ & $\Rdot(0)$ \\
+ & & $[10^{-9} \, \Msun^{-1} ]$ & $ [\pyG] $ \\
+\hline
+\multirow{2}{*}{$1.0$} & ECPL & $13.7 ^{+1.2} _{-3.9}$ & \multirow{2}{*}{$0.68$-$3.89$} \\
+ & BPL & $3.74 ^{+3.76} _{-1.15}$ & \\
+\hline
+\multirow{2}{*}{$1.5$} & ECPL & $6.45 ^{+0.39} _{-1.32}$ & \multirow{2}{*}{$0.82$-$3.80$} \\
+ & BPL & $2.05 ^{+1.73} _{-0.58}$ & \\
+\hline
+\multirow{2}{*}{$2.0$} & ECPL & $3.65 ^{+0.26} _{-0.61}$ & \multirow{2}{*}{$0.61$-$2.66$} \\
+ & BPL & $1.23 ^{+0.94} _{-0.34}$ & \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption[The local short GRB formation rate]{Comparison of the derived local SGRB formation rate uncorrected for the beaming factor, $\Rcap(0)$, with previous works. The rate quoted for the present work combines the results of all considered $n$-s and includes the $68 \%$ confidence intervals of both the models.}
+\label{tab:rate_comparison}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+Reference & $\Rdot(0)$ \\
+ & $\pyG$ \\
+\hline
+\hline
+G16, model [a] & $0.13$-$0.24$ \\
+\hline
+GP05 & $0.1$-$0.8$ \\
+Y14 & $0.24$-$0.94$ \\
+G16, model [c] & $0.65$-$1.10$ \\
+present work & $0.61$-$3.89$ \\
+\hline
+C12 & $5$-$13$ \\
+GP06 & $8$-$30$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+The normalization of the models are kept free during the fits, and can thus be derived via the solutions. With the knowledge of $T \sim 8.9$ yr and assuming $ \frac{\Delta \Omega}{4 \pi} \sim \frac{1}{3} $ for \f, the ratios of the observed and modelled normalizations [for the corresponding models in Section \ref{subsec:modelling_LF--short}] are converted to derive $\fB C(0)$, which are used to derive the detected SGRB rate via $\Rdot(z) = \fB C(0) \, \Phi(z)$. These, along with the propagated errors, are listed in Table \ref{tab:fBC0_fits--short}, along with the combined $68\%$ confidence intervals of $\Rdot(0)$ combining both the ECPL and BPL models. $\Rdot(z)$ is plotted in Figure \ref{fig:Rdot_of_z--short}, along with those derived by \citetalias{Ghirlanda_et_al.-2016-A&A}. It is seen that this quantity depends only weakly on $n$, as expected. Combining the results, one gets
+\begin{equation}
+\Rdot(0) = [0.61, 3.89] \, \pyG.
+\label{eq:Rdot0--short}
+\end{equation}
+
+While clearly higher than model [a] of \citetalias{Ghirlanda_et_al.-2016-A&A}, this is consistent with the higher end of \citetalias{Guetta_and_Piran-2005-A&A}, \citetalias{Yonetoku_et_al.-2014-ApJ} and model [c] of \citetalias{Ghirlanda_et_al.-2016-A&A}, while being smaller than the rates deduced by \citetalias{Guetta_and_Piran-2006-A&A} and \citetalias{Coward_et_al.-2012-MNRAS}. This comparison is summarized in Table \ref{tab:rate_comparison}.
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{Rdot_of_z}
+\caption[The beaming-uncorrected SGRB rate as a function of redshift]{The beaming-uncorrected SGRB rate as a function of redshift, $\Rcap(z)$. The [blue] dashed, [orange] solid and [green] dotted lines correspond to the results from the ECPl model for $n = 1.0$, $1.5$ and $2.0$ respectively. Typical $1$-$\sigma$ errorbars have been shown at a representative redshift $\sim 1$. It is seen that the dependence on $n$ is rather weak. The [black] dot-dashed line represents the $n = 1.0$ BPL model. $\Rcap(0)$ is a few times smaller for the BPL model compared to the ECPL model for each $n$. Since the general dependence with redshift is similar for the two models, only one curve has been shown for the BPL model for simplicity. The red and yellow thick lines represent the model fits from \citetalias{Ghirlanda_et_al.-2016-A&A} [see their Figure 4]. Their $\Rcap(0)$ is smaller compared to the present work [see Table \ref{tab:rate_comparison}]. However, their model [a] curve converges with those of the present work at higher redshifts, although model [c] is a factor of few higher than the present curves at high redshifts.}
+\label{fig:Rdot_of_z--short}
+\end{center}
+\end{figure}
+
+
+Comparing Equation \ref{eq:Rdot0--short} to that of Equation \ref{eq:Rdot0--long} for LGRBs [see Section \ref{sec:Modelling_the_GRB_LF--long}], we find that the local GRB formation rate is much larger for short bursts rather than long bursts. Although counter-intuitive given that the rate of detected GRBs is smaller by $\sim 3$ times for SGRBs than LGRBs, the reasons are two-fold: (1) The delay caused by the binary formation and evolution makes most of them merge in the local universe, as compared to the far-away universe, see Figure \ref{fig:CSFR--short}. (2) As demonstrated in Section \ref{subsec:L-z_data_generation--short}, the selection bias in detecting SGRBs at smaller redshifts ensures that we see more SGRBs in the local universe than in the distant universe.
+
+
+\section{Predictions for \AS-CZTI and \D}
+\label{sec:predictions--short}
+
+\subsection{\AS -CZTI}
+\label{subsec:predictions_for_CZTI--short}
+Combining the model parameters and the derived normalizations, predictions are made for the rate of SGRBs detectable by the \AS\ \citep{Rao_et_al.-2016-arXiv-Astrosat} hard X-ray detector CZTI \citep{Rao_et_al.-2016-ApJ, Bhalerao_et_al.-2017-JApA}, similar to Chapter \ref{chap:LGRBs} where a sizeable under-detection of LGRBs was predicted. Assuming $\frac{\Delta\Omega}{4\pi} \sim \frac{1}{3}$, the combined model rate comes out in the range of $14$-$42$ per year at $68 \%$ confidence. However, in the last two years of operation, it has detected only $11$ SGRBs by triggered searches, i.e. by subjective search of GRBs from automatic triggers by other satellites. Moreover, the searches have been carried out at coarse time-bins due to the uncertainties in the characterization of noise at finer time bins. This study implies that a careful automatic search of the CZTI data post removal of sub-second noise in the data will reveal at least $\sim 20$ SGRBs hidden till date. A careful analysis of the sub-second noise is being carried out and will be reported elsewhere. The importance of an automatic detection algorithm and alerts to the astronomical community for quick follow-up measurements cannot be underestimated.
+
+\subsection{\D}
+\label{subsec:predictions_for_Daksha--short}
+The predictions of the short GRB detction rates by the \D\ instruments, assuming $\frac{\Delta \Omega}{4\pi} \sim \frac{1}{2}$, are given in Table \ref{tab:predictions_for_Daksha--short}. The prospects look really bright, and if it achieves this expectation and localise the detected SGRBs in real time, it can be game-changer in the emerging field of multi-messenger astronomy. Given the large number of detected sources, sufficient planning is required in advance to prioritise the list of sources that it can do real-time detailed observations of.
+
+\begin{table}
+\caption[Specifications and short GRB detections estimates for \D]{The wavelength-coverage and sensitivities of the two instruments on \D\ for typical SGRBs, and predictions of their detection rate combining the BPL and ECPL models but excluding uncertainties [because they are large].}
+\label{tab:predictions_for_Daksha--short}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+Wavelength range & Sensitivity & Predicted numbers\\
+ {[keV]} & [$\ergpercmsqpersec$] & [$\py$]\\
+\hline
+\hline
+$1$-$10$ & $10^{-8}$ & $\sim 11$\\
+\hline
+$20$-$200$ & $5 \times 10^{-8}$ & $\sim 34$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+
+\section{The Binary Coalescence Rate}
+\label{sec:Events_rate}
+The observed event rate of SGRBs can be corrected for the beaming factor $ \fB = 1 - \cos(\theta_j), $ where $ \theta_j $ is the half-opening angle of the jet, to derive their true sky rate:
+\begin{equation}
+R_0 = \dfrac{ \Rdot(0) }{\fB}.
+\end{equation} Using radio to X-ray afterglow observations of 11 bursts upto 2015, \cite{Fong_et_al.-2015-ApJ} constrained the range of $\theta_j$ to $6$-$26^{\circ}.$ Allowing for the lower limit of the range to be $3^{\circ}$ as derived for GRB111002A \citep{Fong_et_al.-2012-ApJ} and GRB111117A \citep{Margutti_et_al.-2012-ApJ}, the conservative range of $3$-$26^{\circ}$ is used along with $\Rdot(0)$ deduced in the previous section to derive $R_0$. The $68 \%$ confidence ranges are given by $6.72$-$2838 \, \pyG $ for $n = 1.0$; $8.10$-$2773 \, \pyG$ for $n = 1.5$; and $6.03$-$1941 \, \pyG $ for $n = 2.0$. It is to be noted that although the upper limit of $R_0$ is sensitive to the lower limit of $\theta_j$ and hence debatable, the lower limit of $R_0$ depends on the upper limit of $\theta_j$ and is hence fairly robust. Thus, a sharp lower limit of $R_0 \sim 6 \, \pyG$ is placed via this work upto $68 \%$ confidence. Assuming that each BNSM produces a SGRB, this is also the minimum rate of BNSMs; if not, the merger rate is higher.
+
+\cite{Saleem_et_al.-2018-MNRAS} has simulated a large sample of mergers of non-spinning NSs with component masses of $1.4 \Msun$ each, and taking into account the antenna pattern functions of the gravitational wave detectors, calculated the signal-to-noise ratio [SNR] for their detection as a function of the distance to the merger, and inclination of the axis of the merger plane to the line of sight of the observer, $i$. With a detection criterion set to SNR $> 8.0$, this produces the limiting distance [$D_L$] versus inclination [$i$] scatter plot for a combination of detectors: [a] the LH network comprising the Livingston and Hanford detectors, [b] the LHV network with the addition of the Virgo detector, and [c] the LHVKI network, including the KAGRA detector under construction in Japan \citep{Aso_et_al.-2013-PhRvD}, and the approved LIGO-India detector\footnote{\url{https://dcc.ligo.org/LIGO-M1100296/public}} which is expected to come up in the next decade [see their Figure 1 for configurations b and c]. In this work, I have used this simulated dataset and integrated the $68 \%$ lower limit of $\Rdot(z)$ obtained in this work, upto the limiting redshift corresponding to $D_L$, to obtain the total rate as a function of $i$. Since the lower limits are very weakly dependent on $n$, the curves obtained for $n = 1.0$, the most likely scenario from population synthesis studies, is shown in Figure \ref{fig:merger-rate}. Giving equal weights to all $i$, the integrated rates are $0.95 \, \py$ for the LH network, $1.87 \, \py$ for the LHV network and $3.11 \, \py$ for the LHVKI network.
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{BNSMr_lower_limits}
+\caption[The lower limit of the binary neutron star merger rate for past, present, and future gravitational wave networks]{The lower limit of the binary neutron star merger rate [BNSM] as a function of the inclination of the normal to the merger plane with respect to the line of sight of the observer, $i$, for the Livingston-Hanford [LH] configuration in [blue] dashed line, the Livingston-Hanford-Virgo [LHV] configuration in [orange] solid line, and the future Livingston-Hanford-Virgo-KAGRA-India [LHVKI] configuration in [green] dotted line. Owing to the weak dependence of the deduced $ \Rcap(z) $ on $n$ [see Figure \ref{fig:Rdot_of_z--short}], the most likely scenario [from population synthesis studies] of $n = 1.0$ has been shown. The data for the limiting distance of the GW networks used for this purpose have been taken from \citealt{Saleem_et_al.-2018-MNRAS}. As expected, the detection rate is larger for face-on systems [$\cos i \to \pm 1$] than edge-on systems [$\cos i \sim 0$].}
+\label{fig:merger-rate}
+\end{center}
+\end{figure}
+
+
+In the few years of the observing run of the LH and the LHV network, there have been five confirmed detections of black hole binary mergers, that of GW150914 \citep{GW150914-2016}, GW151226 \citep{GW151226-2016}, GW170104 \citep{GW170104-2017}, GW170608 \citep{GW170608-2017}, and GW170814 \citep{GW170814-2017}; and one confirmed detection of neutron star binary merger, GW170817 \citep{GW170817-2017}. The derived minimum integrated rate of $0.95 \, \py$ for the detection of BNSMs by the LH network is consistent with the detection of the single neutron star inspiral GW170817 that was extensively followed up across the electromagnetic spectrum [EM170817; \cite{EM170817-2017}]. In the future runs, the number is expected to increase by a factor of few, see Figure \ref{fig:merger-rate}.
+
+On the basis of the gravitational wave [GW] data alone from GW170817, \cite{GW170817-2017} placed the rate of BNSMs at $320$-$4740 \, \pyG $ at $90\%$ confidence. This rate is consistent but significantly higher than the SGRB rate derived in this work, $R_0 \sim 6 $-$ 2838 \, \pyG $. This implies that the fraction of GRBs produced from the BNSMs, $f_{{\rm GRB}}$, may be smaller than unity. This has important implications in the physics of the mergers, implying that a fraction of the mergers may not be able to produce the classic on-axis jet that are hypothesized to cause SGRBs associated with the gravitational waves \citep{Narayan_et_al.-1992-ApJ}. The on-axis jet scenario has indeed been ruled out for GW/EM170817 by \cite{Kasliwal_et_al.-2017-Science}, who proposed a cocoon model to explain the multi-wavelength electromagnetic observations. Given the large uncertainties from both the GW and the SGRB rates, only a very weak lower limit of $f_{{\rm GRB}} > 0.001$ can be obtained. As the upcoming runs of the GW networks will significantly improve the detection of the BNSMs, it is envisaged that similar extensive follow-up campaigns of the electromagnetic counterparts of these mergers will shed more light on the physical processes surrounding the merger and the evolution of the associated ejecta.
+
+
+
+\section{Conclusions}
+\label{sec:conclusions--SGRBs}
+In this work, I have combined the accurate spectral energy and redshift measurements of $15$ SGRBS available till date, and found a significant linear correlation between the spectral energy peak in the source frame with the source luminosity, also known as the `Yonetoku correlation'. Next I have used this correlation to derive `pseudo-redshifts' of all SGRBs with measured flux, including \B, \s, and \f\ GRBs. Although the redshift distributions of the sample of $30$ SGRBs with known redshifts are not reproduced for the full redshift range, it is found that $25$ of these GRBs are located at $z < 1.0$, against the expectations from population synthesis studies. Furthermore, the pseudo-redshifts of all instruments agree well with the observed redshift distribution when limited to this redshift range. Thus, instrumental selection effects are understood to play a role in the non-detection of higher-redshift SGRBs. This provided confidence to use the pseudo-redshifts of the full catalogues to calculate their luminosities. This method does not claim to accurately predict the redshifts of individual bursts, but successfully mitigates the problems of having a statistically limited as well as selectively biased sample of bursts for the study of the luminosity function.
+
+Assuming standard delay between the cosmic star formation and the binary neutron star mergers, which are thought to the progenitors of SGRBs, I attempted to fit the observed luminosity distribution of the largest SGRB sample of $757$ bursts studied till date. The simple powerlaw model of the LF is ruled out with high confidence. Both the exponential cutoff powerlaw [ECPL] and the broken powerlaw [BPL] model are found to fit the data of all three GRB-detectors, with the additional complication that the detection probability is different for \B\ compared to \f\ and \s. It is not possible from the current dataset to compare between the quality of fits between these two models, however. The low-luminosity index of the BPL model [$\nu_1$] is found to be weakly constrained below, although the constraints on the higher luminosity index $\nu_2 \sim 1.85$ and the break luminosity $\Lb \sim 1.50$ are much tighter. For the ECPL model, the powerlaw index $\nu \sim 0.7$ is well-constrained, and although the break luminosity is weakly constrained above, it is at least a few times higher than for the BPL model. Unlike in the case of long GRBs, it is not necessary to invoke any redshift dependence of the break luminosity, consistent with existing works in the SGRB literature. The current work is purely empirical in nature, and does not attempt to provide physical explanation of the LF models, which should be independently pursued via detailed phenomenological models of SGRBs.
+
+The bestfit models are then used to make predictions of the SGRB detection rate of \AS -CZTI, implying that at least $\sim 20$ GRBs are undiscovered till date in the CZTI data by subjective triggered searches. They are also used to estimate the future prospects of the \D\ mission, and the prospects look really bright. The models are also used to derive the observed event rate of SGRBs, which is found to be weakly dependent on the assumed delay distribution. Adopting conservative limits of the jet opening angle, this is converted to get the true event rate of SGRBs. Assuming that each SGRB is produced from a binary neutron star merger [BNSM], this rate is then used to calculate the rate of BNSMs detectable by the past, current and upcoming global GW detector networks. Robust lower limits of $1.87 \, \py$ for the LHV and $3.11 \, \py$ for the LHVKI networks are derived, while the true rates may be significantly higher. The uncertainty on the rate of BNSMs calculated via the only confirmed BNSM detection via gravitational waves presented in the discovery paper of GW170817 \citep{GW170817-2017}, as well as the uncertainty on the SGRB rate derived from this work, are large. This makes it impossible to rule out the scenario that not all mergers produce SGRBs. However, the presence of a tension between these independently derived rates can have significant implications on the physics of the merger ejecta, in line with the detailed study of the electromagnetic follow-up of GW170817 \citep{Kasliwal_et_al.-2017-Science}. Similar extensive electromagnetic follow-up campaigns of the future BNSMs detected via gravitational waves will be able to make more conclusive statements about the physics of the merger ejecta on a case-by-case basis.

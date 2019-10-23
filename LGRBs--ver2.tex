@@ -1,0 +1,500 @@
+\begin{checkit}
+This work is based on \cite{Paul-2018-MNRAS--long}. I sincerely thank Eric Burns for extremely helpful discussions about setting up the common catalogue of \s\ and \f\ GRBs; Professor A R Rao for helpful discussions and suggestions during the entire course of the work; \AS -CZTI member Vidushi Sharma for the updated list of GRBs detected by CZTI and related discussions; Professor Pawan Kumar for his comments on the manuscript of the paper; and the referee for the critical comments which immensely improved the quality of the work.
+\end{checkit}
+
+
+
+\section{Introduction}
+\label{sec:introduction--LGRBs}
+For any GRB detector, an interesting estimable quantity is the number of GRBs observed, as a function of measurable parameters. This depends on instrumental parameters like duration-of-operation $T$, and field-of-view $\Delta \Omega$, as well as the observed GRB production-rate and the distribution over intrinsic properties of GRBs. Let us assume that the rate of GRBs beamed towards an observer on earth from an infinitesimal co-moving volume $\dd V$, is given by $\Rdot (z) \frac{\dd V}{1+z}$, where $z$ denotes the redshift, and the factor $(1+z)^{-1}$ takes care of the cosmological time dilation.
+
+Most generally, the number of GRBs detected by the instrument in the luminosity [$L$] range $L_1$ to $L_2$ and redshift range $z_1$ to $z_2$ is given by,
+
+\begin{equation}
+N(L_1,L_2; z_1,z_2) = T \, \dfrac{\Delta \Omega}{4 \pi} \, \intop_{max[L_1, \, L_c]}^{L_2} \Phi_z(L) \dd L \, \intop_{z_1}^{z_2} \dfrac{ \Rdot(z) }{1+z} \dd V,
+\label{eq:definition_of_phi}
+\end{equation} where $L_c$ denotes a lower-cutoff in the intrinsic luminosity of GRBs [see Section \ref{sec:The_estimated_luminosities--long}]. The function $\Phi_z(L)$ is formally called the `luminosity function' [henceforth LF], having the units of $(\ergpersec)^{-1}$, the subscript referring to an implicit dependence on the redshift. In view of the fact that GRBs are end-products of massive stars in galaxies, the GRB formation rate $\Rdot(z)$ can be written as
+\begin{equation}
+\Rdot(z) = \fB C\, \csfr,
+\label{eq:R_dot--long}
+\end{equation} where $\csfr$ gives the cosmic star formation rate [CSFR] in $ \pyG$, $C$ gives the efficiency of GRB production given a certain stellar mass, in units of $\Msun^{-1}$, and $\fB$ encodes the beaming effect of the relativistic jets producing the burst. All of these terms may be functions of the redshift.
+
+The dependence of the detected number distribution of a certain class of astrophysical object on its luminosity function, is quite general. It has been extensively studied in the context of galaxies, galaxy clusters [see \cite{Galaxy_cluster_LF-2017-MNRAS} and references therein], white dwarfs [see \cite{White_dwarf_LF-2016-review} for a recent review], quasars [see \cite{Quasar_LF_in_UV-2017-MNRAS} and references therein], high mass Xray binaries [see \cite{High_mass_XRB_LF-2017-MNRAS} and references therein] etc. The methodologies depend on the observational window available for the study of the particular objects of interest [for example, while \cite{Galaxy_LF_using_WISE-2017-AJ}, \cite{Galaxy_LF_in_Kband-2017-MNRAS}, \cite{Galaxy_nearby_LF-2017-ApJ} etc. use the infrared bands to calculate the absolute magnitude of galaxies, \cite{Galaxy_LF_in_Bband-2017-A&A} use the optical B-band, and \cite{Galaxy_LF_in_UV_at_Cosmic_High_Noon-2017-ApJ}, \cite{Galaxy_primeval_LF_in_UV-2017-MNRAS}, etc. use the UV bands], but the central theme is similar for all of the objects -- to measure the intrinsic properties of the sources and statistically study their cosmological evolution. Moreover, the LF of the various objects are related to each other, making this a difficult quantity to measure. For example, the cosmic star-formation rate [CSFR] derived from the galaxy LF, and the GRB LF, are related via Equations \ref{eq:definition_of_phi} and \ref{eq:R_dot--long}. This will be discussed in more details below.
+
+The measurement of the redshift [hence distance] of a GRB is essential for measuring its intrinsic luminosity. In the era of the Burst And Transient Source Experiment [\B] on board the \emph{Compton Gamma Ray Observatory} [CGRO], which detected around $2700$ GRBs in a span of $9$ years [approximately one GRB per day, see \url{https://heasarc.gsfc.nasa.gov/docs/cgro/batse/}], the measurement of redshift of a detected GRB depended on coincident detection by other instruments with greater localisation capabilities. In 1997, the Italian-Dutch satellite \bs\ \citep{Boella_et_al.-1997-A&AS} provided the redshift of a burst for the first time via afterglow observations, that of GRB970508 [see \cite{Costa_et_al.-1997-Nature}, \cite{Bloom_et_al.-1998-ApJ}, \cite{Fruchter_et_al.-2000-ApJ} and references therein]. However, the number of GRBs with redshifts measured by \bs\ remained only a handful over the years \citep{Amati_et_al.-2002-A&A}. The situation changed entirely with the advent of the Burst Alert Telescope [BAT] on board \s\ \citep{Gehrels_et_al.-2004-ApJ, Barthelmy_et_al.-2005-SSRv-SwiftBAT}, launched in 2004. In addition to detecting roughly $1$ GRB every $3$ days, it has fast on board algorithms to localise the burst and follow it up swiftly with other on-board instruments, the X-Ray Telescope [XRT] and UltraViolet/Optical Telescope [UVOT], as well as other ground-based missions. This provides redshifts via emission lines, absorption lines and photometry of the host-galaxies and/or afterglow, for roughly $\frac{1}{3}^{{\rm rd}}$ of the \s\ GRBs, making it possible to study the intrinsic properties of $\sim 300$ GRBs till date [\url{https://swift.gsfc.nasa.gov/archive/grb_table/}].
+
+\cite{Yonetoku_et_al.-2004-ApJ} [hereafter \citetalias{Yonetoku_et_al.-2004-ApJ}] used the measured redshift and spectral parameters of $12$ \bs\ GRBs from \cite{Amati_et_al.-2002-A&A} and an additional $11$ GRBs detected by \B\ to derive the `Yonetoku correlation' between the $1$ s peak luminosity and the spectral energy break in the source frame. Using this correlation, they estimated the `pseudo redshift' of $689$ \B\ long GRBs [LGRBs] with unknown redshifts. Subsequently, they discussed the GRB formation rate and found that a constant LF does not fit the data.
+
+\cite{Daigne_et_al.-2006-MNRAS} studied the logN-logP diagram of \B\ GRBs and the peak-energy distribution of bright \B\ and HETE-2 GRBs, as well as carried out extensive simulations for \s\ GRBs and applied them to early \s\ data to predict that long GRBs show significant cosmological evolution. \cite{Salvaterra_et_al.-2007-ApJ} and \cite{Salvaterra_et_al.-2009-MNRAS} investigated the peak-flux distribution of \B\ GRBs in different scenarios regarding the CSFR, the evolution of the GRB LF, and the metallicity of the GRB formation environments. They then compared the predicted peak-flux distribution of \s\ GRBs primarily with $z > 2$ with available data to conclude that the two satellites observe the same distribution of GRBs, the GRB LF shows significant cosmological evolution, and that the GRB formation is limited to low metallicity environments.
+
+Since then, \s\ GRBs with measured redshifts have been studied extensively to model the long GRB LF. To do this, \cite{Wanderman_&_Piran-2010-MNRAS} directly inverted the observed luminosity-redshift relationship. \cite{Cao_et_al.-2011-MNRAS} carried out a phenomenological study of the observational biases on doing this, concluding that a broken powerlaw model of the long GRB LF is preferred, with pre and post break luminosity of $2.5 \times 10^{52} \, \ergpersec $ given by $1.72$ and $1.98$ respectively. They also point to the requirement of cosmological evolution of the LF at high metallicity environments. \cite{Salvaterra_et_al.-2012-ApJ} used a flux-complete sample of $58$ \s\ GRBs, with a redshift completeness of $90 \%$, to conclude that the broken powerlaw model is degenerate with the exponential cut-off powerlaw model. They also conclude that the GRB LF evolves with redshift, claiming that this conclusion is independent of the used model. \cite{Robertson_and_Ellis-2012-ApJ} however used a sample of $112$ \s\ GRBs to disfavour strong cosmological evolution of the formation rates of GRBs at $z<4$, and concluded that the best-fit trend of the evolution strongly over-predicts the CSFR at $z > 4$ when compared to UV-selected galaxies, alluding to unclear effects in addition to metallicity and the GRB formation environment. \cite{Howell_et_al.-2014-MNRAS} used two new observation-time relations and accounted for the complex triggering algorithm of \s-BAT to reduce the degeneracy between the CSFR and the GRB LF. They satisfactorily fit a non-evolving LF with a powerlaw broken at $0.80 \pm 0.40 \times 10^{52} \, \ergpersec$ by pre and post indices of $0.95 \pm 0.09$ and $2.59 \pm 0.93$ respectively, while not entirely ruling out the possibility of an evolution in the break luminosity. \cite{Petrosian_et_al.-2015-ApJ} used a sample of $200$ redshift measured \s\ GRBs to carry out a non-parametric determination of the quantities related to the CSFR and the GRB LF. They claimed that the LF evolves strongly with $z$, satisfactorily fit to a broken powerlaw model with pre and post break indices $1.5$ and $3.2$ respectively. They also estimated a GRB formation rate an order of magnitude higher than that expected from CSFR at redshifts $z<1$, but matching with the CSFR at higher redshifts, contrary to all previous studies. On the other hand, \cite{Deng_et_al.-2016-ApJ} carried out an extensive study of the observational biases on the flux-truncation, trigger probability, redshift measurement, etc. with $258$ \s\ GRBs, concluding that it is not possible to argue for a robust cosmological evolution of the long GRB LF. The major limitations in the study of the GRB LF with \s\ GRBs is the narrow energy band of BAT, which does not allow an accurate determination of the spectral parameters of the GRBs, since most of the bursts have spectral cutoffs at energies greater than the BAT high-energy threshold of $150$ keV. The conclusions of several of these studies are moreover in contradiction to each other. Regardless, several authors have discussed the implications of these results in the context of the structure of the GRB jets, for both \B\ \citep{Firmani_et_al.-2004-ApJ,Guetta_Granot_Begelman-2005-ApJ,Guetta_Piran_Waxman-2005-ApJ} and \s\ GRBs \citep{Pescalli_et_al.-2015-MNRAS}. The redshift distribution of \s\ bursts emerging from the study of the LFs, assuming different metallicity environments of GRBs, has been discussed by \cite{Natarajan_et_al.-2005-MNRAS}.
+
+The two major limitations of studies that use GRBs with measured redshifts to constrain the GRB LF are: (1) the number of such available sources is rather small to tightly constrain the LF or statistically answer questions related to its evolution with redshift, leading to a variety of conclusions; (2) the measurement of redshifts always suffers from observational biases. To overcome these limitations, \cite{Lloyd-Ronning_et_al.-2002-ApJ} used $220$ \B\ GRBs with redshifts inferred from an empirical luminosity-variability relation \citep{Fenimore_and_Ramirez-Ruiz-2000-arXiv}. This was extended by \cite{Firmani_et_al.-2004-ApJ} who carried out a joint fit of these GRBs along with the observed peak-flux distribution of more than $3300$ \emph{Ulysses}/\B\ GRBs. The conclusions always favoured a cosmological evolution of the GRB LF, although the data was not able to distinguish between single powerlaw and double-powerlaw models. \cite{Shahmoradi-2013-ApJ} proposed a multivariate log-normal distribution which he fitted for $2130$ \B\ GRBs. \cite{Kocevski_&_Liang-2006-ApJ} on the other hand used an empirical lag-luminosity correlation to constrain the GRB LF and the CSFR independently from the study of $900$ GRBs, favouring a single powerlaw fit to the GRB LF. Incidentally, similar methods have also been applied for galaxies to study the galaxy LF [see \cite{Galaxy_LF_pseudo_redshift-2017-arXiv} and references therein].
+
+\cite{Tan_et_al.-2013-ApJL} [hereafter \citetalias{Tan_et_al.-2013-ApJL}] uses the Yonetoku correlation to estimate the pseudo redshifts of $498$ GRBs. This avoids the observational bias of the redshift measurements, and the flux truncation is corrected for during the modelling. First they test the correlation parameters by comparing the redshift distribution of $172$ \s\ GRB whose redshifts are known. They find that the best-fit parameters do not predict the redshift distribution of this sub-sample well. So they choose the values for which the distributions of known and pseudo redshifts of these GRBs are statistically similar. Since the \s\ bandpass is too narrow to determine the spectral parameters of \s\ GRBs, they use the \cite{Butler_et_al.-2007-ApJ} catalogue in which the Band function [see \cite{Band_et_al.-1993-ApJ}, hereafter \citetalias{Band_et_al.-1993-ApJ}] parameters are estimated with a Bayesian technique. They conclude that the GRB LF is inconsistent with a simple powerlaw, demanding a fit with a broken powerlaw with pre and post break indices given by $0.8$ and $2.0$ respectively. In addition, the break itself evolves cosmologically as $\Lb = 1.2 \times 10^{51} \, \ergpersec \, (1+z)^{2}$, and the GRB formation rate evolves as $\propto(1+z)^{-1}$ in contradiction to all previous studies. They do not look into the accuracy of pseudo redshifts of the GRBs individually, and the analysis is entirely based only on a statistical comparison of the redshift distributions.
+
+In the present work, I carry out a detailed study of the estimation of pseudo redshifts, using long GRBs that have firm redshift measures from \s, as well as spectral parameter measurements from \f. The reason such a sample is useful is because it combines the wide spectral coverage of \f\ [which however does not provide redshift] with the redshift measurements from \s\ follow-ups. This reduces the errors on the correlated quantities compared to the Butler catalogue, which allows me to test the correlation itself, and also carefully examine the accuracy of the pseudo redshifts estimated from the correlation. I then use it to estimate the pseudo redshift  of all \f\ and \s\ GRBs, and place constraints on the long LF from a combined study of all these $2067$ GRBs. Previously, \cite{Yu_et_al.-2015-ApJS} has used a combined sample of $127$ long GRBs with spectra from \f\ and Konus-\emph{Wind}, and redshift from \s, to independently model the CSFR and the GRB LF. They used the GRBs irrespective of whether the spectral peak is actually seen in the instrumental waveband. In the present work, I choose only those bursts in which the spectral peak is accurately modelled, to re-derive the parameters of the Yonetoku correlation, which is then used to include a much larger number of sources.
+
+This chapter is organized as follows. In Section \ref{sec:Yonetoku_correlation--long}, the Yonetoku correlation is re-derived. In Section \ref{sec:The_estimated_luminosities--long}, I describe the use of the correlation to generate pseudo redshifts of all remaining \f\ and \s\ GRBs. The GRB LF is modelled in Section \ref{sec:Modelling_the_GRB_LF--long}. In Section \ref{sec:predictions--long}, I detail the predictions made for \AS -CZTI [Section \ref{subsec:predictions_for_CZTI--long}], soft X-ray instruments past, present and future [Section \ref{subsec:predictions_for_soft_Xray_instruments--long}], and \D\ [Section \ref{subsec:predictions_for_Daksha--long}]. As an extension of Section \ref{subsec:predictions_for_soft_Xray_instruments--long}, I investigate the prospects of a future soft X-ray instrument as a detector of Tidal Disruption Events [TDEs]. In Section \ref{sec:conclusions--LGRBs}, I present concluding remarks. All the scripts used and important databases generated in this chapter are publicly available at: \url{https://github.com/DebduttaPaul/luminosity_function_of_lGRBs}. Throughout this thesis, a standard $\Lambda$-CDM cosmology with $H_0 = 72 \, \rm{km \, s^{-1} \, Mpc^{-1}}$, $\Omega_m = 0.27$ and $\Omega_{\Lambda} = 0.73$ has been assumed.
+
+
+\section{The Yonetoku correlation}
+\label{sec:Yonetoku_correlation--long}
+It is the correlation seen between the peak luminosity $\Lp$ and the spectral energy break $\Ep$ \citepalias{Band_et_al.-1993-ApJ} in the source frame.
+
+The peak luminosity is defined as
+\begin{equation}
+\Lp = P \, 4\pi d_L(z)^{2} \times k(z; \,{\rm spectrum}),
+\label{eq:Luminosity_formula}
+\end{equation} where $P$ denotes the peak flux modelled by the Band function during the burst duration, given in $\ergpercmsqpersec$, and
+\begin{equation}
+k(z) = \dfrac{\int_{1 \, \keV}^{10^4 \, \keV} E \, S(E) \dd E}{\int_{(1+z)E_{\rm{min}}}^{(1+z)E_{\rm{max}}} E \, S(E) \dd E}
+\label{eq:definition_of_k---Fermi--long}
+\end{equation} for \f\ GRBs. In case of \s\ bursts, where the peak flux is given in $\phpercmsqpersec$,
+\begin{equation}
+k(z) = \dfrac{\int_{1 \, \keV}^{10^4 \, \keV} E \, S(E) \dd E}{\int_{(1+z)E_{\rm{min}}}^{(1+z)E_{\rm{max}}} S(E) \dd E} \,.
+\label{eq:definition_of_k---Swift--long}
+\end{equation}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{k_correction--Fermi}
+\includegraphics[scale=0.42]{k_correction--Swift}
+\caption[$k$-correction factors for \f\ and \s]{The $k$-correction factors for \f\ [left] and \s\ [right], assuming average spectral parameters as derived from the sample of Fermi bursts: $<\Ep> \, = 181.3$ keV, $<\alpha> \, = -0.566$, $<\beta> \, = -2.823$. Since these average numbers are used, they do not include uncertainties. Note that the units of $k$ are different for the two missions owing to Equations \ref{eq:definition_of_k---Fermi--long} and \ref{eq:definition_of_k---Swift--long}. One also notices the striking difference in the scales: whereas it is much close to unity for \f, which is a wide-band detector, for \s, it is much larger for large redshifts than its value at the local universe, because of its limited energy-range.}
+\label{fig:k-correction--long}
+\end{center}
+\end{figure}
+
+To accurately derive the Yonetoku correlation, I first select the sub-sample of all \f\ and \s\ bursts that have accurate estimations of the Band function \citepalias{Band_et_al.-1993-ApJ} parameters during the prompt emission, by \f, as well as accurate redshift measurement by \s\ follow-up. Previous works have relied on modelling the spectral parameters by \s, which suffers from the limited wavelength range of BAT. I use the accurate spectral parameters from \f\ instead, reducing the inaccuracy of the estimates of luminosity. Moreover, due to the same reason, I also notice that the $k$-correction is very close to unity for these bursts, unless the redshift is not too large [even for $z = 10$, the factor is less than $1.5$]. This is illustrated in left of Figure \ref{fig:k-correction--long}. In comparison, the $k$-correction of \s\ is much larger for larger redshifts.
+
+
+
+
+\subsection{Selecting the common GRBs}
+\label{sec:selecting_common_GRBs}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{comparing_T90s_of_common_GRBS--all}
+\caption[Comparison of $\T$s of \f\ and \s\, GRBs]{Despite the expected correlation between the \f\ and \s\ $\T$s being observed, some GRBs have systematically smaller $\T$ in \f\ than \s. This has been investigated in detail, see Chapter \ref{chap:ongoing}.}
+\label{fig:T90_comparison}
+\end{center}
+\end{figure}
+
+The updated list of \f\ GRBs are selected from the \f\ catalogue\footnote{\url{https://heasarc.gsfc.nasa.gov/W3Browse/fermi/fermigbrst.html}} till GRB170501467, which includes $2070$ GRBs. Firstly, I choose only those bursts from the catalogue that have spectroscopically measured parameters for the GRB Band function, which includes $1729$ such cases. Then only those with small errors on the spectral parameters are chosen. For this, it is noted that the primary parameter that drive the error estimates in the luminosity is the $E_p$. Choosing only those with errors less than $100\%$ in $\Ep$, $1566$ bursts are retrieved.
+
+The updated list of \s\ GRBs are selected from the \s\ catalogue\footnote{\url{https://swift.gsfc.nasa.gov/archive/grb_table/}} till GRB 170428A. The total number is $1021$, out of which those with firm redshift measurements is $312$.
+
+Since the nomenclature of \f\ and \s\ GRBs are different, I select the following criteria for selecting the common GRBs. The difference between the trigger times are selected to be less than $10$ minutes, and they are restricted to within $10^{\circ} \times 10^{\circ}$ in RA and Dec for the two instruments. These numbers are empirically chosen, such that the common number of GRBs converge within a reasonable range of these cutoffs. This ensures I do not mistake two GRBs which are well separated in time and space to be the same GRB. Consequently I get $68$ common GRBs. Applying the $\T$ criterion for identifying short versus long bursts \citepalias{Kouveliotou_et_al.-1993-ApJ} separately for the two missions, I note that $65$ are long according to both \f\ and \s, two are short in both, while only one is short only in \f, GRB090927422 [\f\ nomenclature]. Its \f-$\T$ is $0.512 \pm 0.231$ s while that of \s\ is $2.2$ s. \f-$\T$s are calculated at higher energies and hence known to be systematically smaller in a handful of GRBs. Figure \ref{fig:T90_comparison} illustrates this effect. Hence, I choose this as a long burst. Moreover, this also gives me confidence to make the distinction between long and short GRBs based on the \s-criterion whenever it is available, i.e. for the other common GRBs [without redshift estimates from \s]. For the ones that are detected only by \f, I resort to applying the criterion based on the \f-$\T$.
+
+
+\subsection{Testing the correlation}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{L_vs_Ep0--correlations--my_bestfit}
+\caption[Yonetoku correlation of long GRBs]{The Yonetoku correlation as seen from the data of $66$ long GRBs with accurate Band parameters from \f\ and redshift measurement from \s. The parameters of the correlation, from various studies, are over-plotted. I get the best-fit parameters of $A = 4.783 \pm 1.026$ and $\eta = 1.227 \pm 0.038$ for the the correlation defined in Equation \ref{eq:Yonetoku_correlation--long}.}
+\label{fig:Yonetoku_correlation--long}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{redshift_comparison}
+\includegraphics[scale=0.42]{distribution--my_bestfit}
+\caption[Observed versus pseudo redshifts]{The redshift distribution for the $66$ long GRBs chosen in our sample. \eL: Individual comparison, the line indicating the expected relationship if the method was successful in predicting the pseudo redshifts accurately. \eR: Statistical comparison: filled [cyan] histogram shows the observed distribution, hatched [black] histogram shows the pseudo redshift distribution. The small discrepancies, specially at higher redshifts, can be easily understood to be due to the errors on the pseudo redshifts.}
+\label{fig:redshift_distribution--bestfit}
+\end{center}
+\end{figure}
+
+When I plot $\Lp$ versus $\Ep (1+z)$ [the factor of $(1+z)$ takes care of the transformation into the co-moving frame] for all the 68 GRBs, I notice that the only burst with systematically smaller $\Lp$ than the rest, is a short burst. Moreover, the sample of short GRBs with accurate spectral and redshift measures consists of only two cases. Hence, I do not attempt to study the correlation for short bursts separately. Moreover, I do not find any burst with luminosity lower than $10^{49} \, \ergpersec $, nor with $\T > 10^3$ s, and hence I do not attempt to segregate the possible separate classes of low-luminosity long GRBs [see for example \cite{Liang_et_al.-2007-ApJ}], or ultra-long GRBs [e.g. \cite{Levan_et_al.-2014-ApJ}].
+
+I retrieve the Yonetoku correlation from the $66$ long bursts to a high degree of confidence [a null-hypothesis of the Spearman correlation co-efficient of $0.623$ being false, ruled out with $p = 2.368 \times 10^{-8}$], as shown in Figure \ref{fig:Yonetoku_correlation--long}. The errors on $\Lp$ consist of errors in the flux as well as a conservative estimate of $70 \%$ systematic error added to all bursts, to take care of the inaccuracy in the spectral parameters. These parameters are non-linear and hence the errors cannot be calculated directly. The systematic error is chosen conservatively, since the changes in the spectral parameters always affect the estimates in $\Lp$ within a factor of $1.5$ even for the highest redshift bursts [see Figure \ref{fig:k-correction--long} for reference]. Also, if linear errors are propagated, the mean errors are again of the same order.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{scatter_with_measured_redshift--my_bestfit}
+\caption[Systematic trend in the ratio of observed and predicted luminosities]{A strong anti-correlation is seen against the measured redshift, for the ratio between the luminosities predicted [from the best-fit Yonetoku correlation] and that measured directly.}
+\label{fig:correlation_of_ratio_with_measured_z}
+\end{center}
+\end{figure}
+
+
+For the Yonetoku correlation defined as 
+\begin{equation}
+\dfrac{ \Lp }{10^{52} \, \ergpersec} = A \left[ \dfrac{\Ep}{ {\rm MeV} } (1+z) \right]^{\eta},
+\label{eq:Yonetoku_correlation--long}
+\end{equation} I get the best-fit parameters of $A = 4.780 \pm 0.123$ and $\eta = 1.229 \pm 0.037$. The corresponding redshift distributions for the same GRBs, both statistically and individually, are shown in Figure \ref{fig:redshift_distribution--bestfit}. It is noticed that although the method does not reproduce the redshifts on an individual basis, it is statistically reliable. The pseudo and observed redshifts have a median ratio of $1.002 \pm 0.721$, i.e. the number is consistent with unity. This is not an effect of normalization, as all the normalization factors are defined explicitly via Equation \ref{eq:Yonetoku_correlation--long}. The reason of it being statistically reliable is that, the method produces the pseudo redshifts of a larger sample by assuming gross parameters from a smaller sample which is however unbiased. The systematic discrepancies for individual bursts can be ascribed to the scatter around the Yonetoku correlation, as discussed below.
+
+\citetalias{Tan_et_al.-2013-ApJL} uses the set of parameters that reduce the discrepancy between the distributions of the observed and pseudo redshifts. This method tries to reconcile the problem by changing the parameters, while circumventing the actual problem, that the Yonetoku correlation is intrinsic scattered. This is best illustrated by the left panel of Figure \ref{fig:redshift_distribution--bestfit}. Moreover to verify their method, I run it on the current dataset, and no global minimum of the discrepancy between the distributions is found. Hence, instead of modifying the parameters, I investigate the possible reasons for the scatter.
+
+To investigate the presence of systematics in the discrepancy between the observed and the pseudo redshifts, I look for possible correlations of the ratio of the predicted luminosity from the Yonetoku correlation with the physical parameters $\Ep (1+z)$ and the measured redshift. No correlation is found with the former, which confirms that the scatter in the Yonetoku correlation is intrinsic. However, I find a strong anti-correlation between the ratio and the measured redshift, as shown in Figure \ref{fig:correlation_of_ratio_with_measured_z}, with a null hypothesis of the Spearman correlation co-efficient of $-0.533$ being false, ruled out with $p = 4.056 \times 10^{-6}$. The following qualitative hypothesis is proposed to explain this trend. The luminosities predicted by the best-fit parameters of the observed correlation are the better physical estimates of the luminosity, physically correlating with the spectral peak. The scatter in the observed correlation between the quantities $\Lp$ and $\Ep$ [in the source frame] is due to the inadequacy of the definition of the luminosity, which needs to be corrected for physical factors like the beaming of the burst and the burst environment. This explanation, however, is qualitative and requires an in-depth analysis via modelling the possible physical effects, not attempted in the current work.
+
+
+\section{The estimated luminosities}
+\label{sec:The_estimated_luminosities--long}
+
+I next calculate the luminosities of all the \f\ detected bursts. This includes the $66$ GRBs already used in Section \ref{sec:Yonetoku_correlation--long}, and the rest with spectral estimates from \f\ but without redshift estimates from \s\ [irrespective of they are detected by \s]. For the latter cases, pseudo redshifts are predicted via the Yonetoku correlation, using \f\ flux and $k$-corrections. However the \s-$\T$ criterion is applied to those with \s-detections to distinguish between the short and long classes. For the GRBs with only \s\ detections along with measured redshifts, I directly calculate the luminosity from the flux and redshifts from the same catalogue, and the \s\ $k$-corrections derived from the Band function parameters fixed at the average values of the \f\ distribution, given by $<\Ep> \, =181.3$ keV, $<\alpha> \, = -0.566$, $<\beta> \, = -2.823$. It is to be noted that the $k$-correction is not sensitive to these parameters, as long as they are within a reasonable range [see for example \cite{Preece_et_al.-2000-ApJS} for the study of \B\ bursts]. For those bursts detected only by \s\ and further lacking redshift measurements, I estimate the pseudo redshifts via the \s\ $k$-corrections and the Yonetoku correlation. Since $\Ep$ features explicitly in the correlation, they are randomly sampled from the distribution of the \f\ bursts. The justification for such an approach is again that the \f\ being a wide-band detector, samples out all possible values of $\Ep$.
+
+
+In Figure \ref{fig:pseudo_redshifts_and_luminosities--long} is shown the $L$-$z$ distribution of all these cases. The instrumental sensitivities are given by Equation \ref{eq:Luminosity_formula} with $P = 8.0 \times 10^{-8} \, \ergpercmsqpersec$ for \f\ and $P = 0.2 \, \phpercmsqpersec$ for \s\ [for a $100$ keV photon, this is equivalent to $3.2 \times 10^{-8} \, \ergpercmsqpersec$]. These numbers are chosen empirically from the respective catalogues, and describe the lower cutoff well. This places confidence on the used method and the estimated luminosities, and I proceed to use them for modelling the luminosity function [in Section \ref{sec:Modelling_the_GRB_LF--long}]. The slopes of the two correlations are $1.584 \pm 0.002$ for \f\ and $1.834 \pm 0.002$ for \s. A few bursts [eight] fall below the sensitivity line, which may be ascribed to the fact that the spectral parameters are sampled randomly from the \f\ distribution, whereas the flux is measured by \s; also, the $k$-correction increases sharply with $z$ for \s. These bursts are removed from the sample for subsequent analysis.
+
+
+\begin{table}
+\caption[Categories of long GRBs used for modelling LF]{The type of \f\ and \s\ long GRBs used for modelling, and how they are referred. The total number is $2067$.}
+\label{tab:GRB_numbers--long}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+type & redshift measured & number & modelled as\\
+\hline 
+\hline 
+both \f\ and \s & yes & 66 & \multirow{2}{*}{\f}\\
+\cline{1-3} 
+only \f, or both & no & 1278 & \\
+\hline 
+only \s & no & 499 & \multirow{2}{*}{\s}\\
+\cline{1-3} 
+only \s & yes & 224 & \\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+
+
+On an average, the pseudo redshifts have $ \sim 20 \% $ errors and the luminosities calculated from them have $ \sim 40 \% $ errors, after propagating errors in all the estimation steps. Theoretically, the redshifts and hence luminosities of the \s\ bursts have much larger uncertainties, because their $\Ep$s are not known. However, this fact is ignored, to use these bursts in the statistical sense, laying no claim to the accuracy of the individual pseudo redshifts.
+
+I also note that the distribution of pseudo redshifts and corresponding luminosities are relatively insensitive to the exact value of the parameters used for the Yonetoku correlation, as long as they are not significantly different from the best-fit estimates. The advantage of using this method lies in the fact that it evades the complex observational biases that plague and limit the study of redshift measured bursts. Also, it allows the model to take care of the instrumental thresholds while modelling the luminosity function via Equation \ref{eq:definition_of_phi}, to which I turn next.
+
+
+\section{Modelling the long GRB luminosity function}
+\label{sec:Modelling_the_GRB_LF--long}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{L_vs_z--Fermi_long_all}
+\includegraphics[scale=0.42]{L_vs_z--Swift_long_all}
+\caption[Luminosity versus redshift of all long GRBs]{The luminosity versus redshifts of all GRBs. The red points are for those with redshift measurements, while black points are for those whose pseudo redshifts are derived as described in the text. The dotted lines show the corresponding instrumental sensitivity limits. The errors are not shown for the purpose of better visibility. \eL: For the GRBs that are detected by \f, irrespective of \s\ detection, including those with known redshifts [the 66 cases considered to study the correlation]. For all these bursts, the \f\ $k$-correction is used, whereas the \s-$\T$ criterion is applied for those available. \eR: For the bursts with detection only by \s, including those with measured redshifts. See Table \ref{tab:GRB_numbers--long} for more details on the nomenclature.}
+\label{fig:pseudo_redshifts_and_luminosities--long}
+\end{center}
+\end{figure}
+
+
+For the purpose of modelling the luminosity function, the GRBs [$27$ in number] that have pseudo redshift greater than $10$ are not considered. The final number of GRBs used are showed in Table \ref{tab:GRB_numbers--long}. Also, the modelling is carried out separately for \f\ and \s, since the cut-off luminosities which feature in the model, via Equation \ref{eq:definition_of_phi}, are different for the two instruments, as discussed in Section \ref{sec:The_estimated_luminosities--long}. For each instrument, I bin the data into three equipopulous redshift bins: $0 < z <1.538$, $1.538 \leq z < 2.657$, $2.657 \leq z < 10.0$ for \f, and $0 < z < 1.809$, $1.809 \leq z <3.455$, $3.455 \leq z < 10.0$ for \s. It is to be noted that the errors on $N(L)$ are proportionally large, due to the large percentage errors on the derived luminosities, which are propagated across the bins.
+
+In the most recent work on GRB LF, \cite{Amaral-Rogers_et_al.-2017-MNRAS} [hereafter \citetalias{Amaral-Rogers_et_al.-2017-MNRAS}] discuss various kinds of models. In particular, they test models in which the GRB formation rate is tied to a single population of progenitors via the cosmic star formation rate, another similar but distinct model where low and high luminosity GRBs are separated into two distinct classes, and a third kind where no assumption of the GRB formation rates are made. They conclude that a clear distinction between the three kinds of models cannot be asserted however. In the present work, I do not attempt to classify low and high luminosity GRBs for the reason that there is no clear evidence from the study in Section \ref{sec:Yonetoku_correlation--long}. Moreover, I assume that the GRB formation rate is proportional to the star-formation rate, because after all it is massive stars formed in the galaxies that later end their lives in GRBs. There may be an additional dependence on the redshift: most generally represented via Equation \ref{eq:R_dot--long}. I take the cosmic star-formation rate $\csfr (z)$ from \cite{Bouwens_et_al.-2015-ApJ} [hereafter \citetalias{Bouwens_et_al.-2015-ApJ}; see references therein for the values at different redshifts], and model additional dependencies of the normalization, that is the GRB formation rate per unit cosmic star formation rate [or the GRB formation efficiency], as 
+
+\begin{equation}
+\fB C(z) \propto (1+z)^{\epsilon}.
+\label{eq:fB.C_of_z--long}
+\end{equation} It is noted that the detailed processes involved in the formation of GRBs do not affect this treatment, which is similar to that followed by \citetalias{Tan_et_al.-2013-ApJL}. Within this framework, I attempt to fit two models: the exponential cut-off powerlaw [ECPL] model, described by
+
+\begin{equation}
+\Phi_z(L) = \Phi_{0}
+\left( \frac{L}{\Lb} \right)^{-\nu} \exp \left[ -\left( \frac{L}{\Lb} \right) \right],
+\label{eq:The_ECPL_model--long}
+\end{equation} and the broken powerlaw [BPL] model, given as
+
+\begin{equation}
+\Phi_z(L) = \Phi_{0} \begin{cases}
+\left( \frac{L}{\Lb} \right)^{-\nu_1}, & L \leq \Lb\\
+\left( \frac{L}{\Lb} \right)^{-\nu_2}, & L > \Lb.
+\end{cases}
+\label{eq:The_BPL_model--long}
+\end{equation} Moreover, most generally the `break-luminosity' $\Lb$ is allowed to vary with redshift, as
+
+\begin{equation}
+\Lb = \Lbn (1+z)^{\delta},
+\label{eq:evolution_of_break_luminosity--long}
+\end{equation} with the quantity $\Lbn$ describing the normalization at zero redshift, and $\delta$ describing the evolution with redshift. The quantity $\Phi_0$ normalizes the probability density function $\Phi(L)$, and is an implicit function of the redshift $z$ via the dependence on $\Lb$. The models are then described by Equations \ref{eq:definition_of_phi}, \ref{eq:R_dot--long}, \ref{eq:fB.C_of_z--long}, \ref{eq:The_ECPL_model--long}, \ref{eq:The_BPL_model--long} and \ref{eq:evolution_of_break_luminosity--long}, along with $\csfr$ extracted numerically from \citetalias{Bouwens_et_al.-2015-ApJ}.
+
+I look for the best-fit parameters of each model for \f\ and \s\ GRBs separately, because they have different $L_c (z)$ as shown in Figure \ref{fig:pseudo_redshifts_and_luminosities--long} [refer to Table \ref{tab:GRB_numbers--long} for the classes].
+
+For the case of the ECPL, it is noticed that any non-zero values of $\delta$ or $\chi$ [or both] decreases the quality of fit, for both \f\ and \s. This allows me to decrease the parameter-space into a 2-dimensional space of $\nu$ and $\Lbn$ [which is equal to $\Lb$ for $\delta = 0$.] In the case of the BPL however, the data strongly requires the inclusion of a positive-definite $\delta$ and a  negative-definite $\chi$. It is to be noted that the ECPL has one parameter less than the BPL, but allows the break to vary naturally, explaining why the data requires the additional dependencies on the parameters $\delta$ and $\chi$ for the BPL model.
+
+I search for the solutions by computing $d_{z}^{2} = \sum_{L} \left[ N_{{\rm model}} \left(L, z\right) - N_{{\rm observed}} \left( L, z \right) \right]^{2}$ for each redshift bin, then evaluating the discrepancy $d^{2} = \sum_{z}d_{z}^{2},$ and finally looking for the model parameters that reduces $d^{2}.$ I optimize the search by first choosing a large grid of parameters with sufficiently small bins, and then gradually converge on the best-fit parameters by decreasing the search-space and bin-size at each run.
+
+In the case of the ECPL, both the \f\ and \s\ runs converge to similar values of parameters, and are consistent within the deduced errors. The fits are generally poorer for the latter case, and also because \s\ detects a larger number of GRBs at higher redshifts due to its higher sensitivity compared to \f. This, however, is not directly taken into account in the modelling, being a limitation of the present work. This is because the exact mathematical form of the detection probabilities at various fluxes is not known. Hence, I tabulate the parameters from only the \f\ fits, in Table \ref{tab:ECPL_model_parameters--long}. The data are generally over-fitted, with the $\red$ for the two instruments being $0.116$ for \f\ and $0.539$ for \s. This is because of the large number of bursts with similar luminosities, all with similarly large uncertainties.
+
+
+\begin{table}
+\caption[Best-fit parameters for the ECPL model]{The best-fit parameters for the ECPL model, as found by search in the $2$-dimensional space of $\nu$ and $\Lbn$, compared to the equivalent model of the recent work of \citetalias{Amaral-Rogers_et_al.-2017-MNRAS}, with which we see an overall agreement.}
+\label{tab:ECPL_model_parameters--long}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+parameter & present work & \citetalias{Amaral-Rogers_et_al.-2017-MNRAS}\\
+\hline 
+\hline 
+$\nu$ & $0.60 \pm 0.1 $ & $0.71 \pm 0.07$\\
+\hline 
+$\Lbn$ & $5.40_{-1.5}^{+2.0}$ & $4.02_{-0.96}^{+1.52}$\\
+\hline 
+\end{tabular}
+\end{center}
+\end{table} 
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.41]{ECPL--Fermi--binned}
+\includegraphics[scale=0.41]{ECPL--Swift--binned}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.38]{ECPL--Fermi--total}
+\includegraphics[scale=0.38]{ECPL--Swift--total}
+\caption[Comparison of data and fits for the ECPL model]{The comparison of data and fits for the ECPL model, for \f\ [left] and \s\ [right]. Upper panels: Binned according to equipopulous redshift bins. Lower panels: Integrated over redshift, for the corresponding instruments in the upper panel. Here, $L_{0} = 10^{52} \, \ergpersec$. The `model' refers to that described in the text, with the final solutions of the parameters tabulated in Table \ref{tab:ECPL_model_parameters--long}. The errors are derived by taking into account the derived errors on luminosities.}
+\label{fig:bestfit_ECPL_models--long}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{discrepancy_contours--Fermi}
+\includegraphics[scale=0.42]{discrepancy_contours--Swift}
+\caption[$d^2$ contours for the BPL model]{The $d^2$  contours for the BPL model, for the two missions: \f\ [left] and \s\ [right], in the $\Lbn$-$\delta$ space. Marked in black-cross in both plots is the minimum discrepancy for \f, while in the \eR, the additional solution for \s\ has been marked in red-cross.}
+\label{fig:discrepancy_contours}
+\end{center}
+\end{figure}
+
+
+
+In the case of the BPL, there is no oscillation of any of the five parameters, justifying that the solutions are global. However it is found that \f\ and \s\ have different best-fits, significant differences being only in the related parameters $\nu_2$, $\Lbn$ and $\delta$. The \s\ solutions require extreme evolution of the break luminosity [$\delta = 3.95$], and raises suspicion of being an artefact of unaccounted systematics. Up on investigation it is found that the \s\ solutions are in fact degenerate with the \f\ solutions. The $d^2$ contours in the $\Lbn$-$\delta$ space have similar global shapes, and also behave similar locally around the \f\ solutions, see Figure \ref{fig:discrepancy_contours}. Thus I conclude that the best-fit solutions obtained for \s\ are driven by complications of its detection probability, and hence choose the \f\ best-fits as the accepted solutions, thus breaking the degeneracy. These are tabulated in Table \ref{tab:BPL_model_parameters--long}. The corresponding fits for the two instruments are shown in Figure \ref{fig:bestfit_BPL_models--long}. The larger proportional errors for \s\ make the $\red$ comparable for the two instruments however, $0.362$ for \f\ and $0.364$ for \s. This demonstrates that the use of \f\, bursts helps in solving the degeneracy of the parameter space of the model.
+
+
+
+\begin{table}
+\caption[Best-fit parameters for the BPL model]{The best-fit parameters for the BPL model, as found by extensive search in the $5$-dimensional space. The convergence of the parameters are tested thoroughly. As a comparison, I show the best-fit parameters for the equivalent model of the recent works of \citetalias{Amaral-Rogers_et_al.-2017-MNRAS} and \citetalias{Tan_et_al.-2013-ApJL}. Since the GRB formation rate is modelled differently in the former, the parameter $\epsilon$ cannot be compared. Moreover, one needs to be cautious to expect the other parameters to agree for the same reason. However, except $\nu_2$, reasonable agreement is found. The comparison is straightforward with \citetalias{Tan_et_al.-2013-ApJL}, which however does not cite errors on their parameters. An overall agreement is noticed between the two works.}
+\label{tab:BPL_model_parameters--long}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+parameter & present work & \citetalias{Amaral-Rogers_et_al.-2017-MNRAS} & \citetalias{Tan_et_al.-2013-ApJL}\\
+\hline 
+\hline 
+$\nu_1$ & $0.65_{-0.3}^{+0.1}$ & $0.69 \pm 0.09$ & $0.8$\\
+\hline 
+$\nu_2$ & $3.10_{-0.4}^{+0.5}$ & $1.88 \pm 0.25$ & $2.0$\\
+\hline 
+$\Lbn$ & $0.30_{-0.1}^{+0.15}$ & $0.15_{-0.09}^{+0.20}$ & $0.12$\\
+\hline 
+$\delta$ & $2.90_{-0.50}^{+0.25}$ & $2.04 \pm 0.45$ & $2$\\
+\hline 
+$\epsilon$ & $-0.80_{-1.0}^{+0.75}$ & - & $-1.0$\\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.41]{BPL--Fermi--binned}
+\includegraphics[scale=0.41]{BPL--Swift--binned}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.38]{BPL--Fermi--total}
+\includegraphics[scale=0.38]{BPL--Swift--total}
+\caption[Comparison of data and fits for the BPL model]{Same as Figure \ref{fig:bestfit_ECPL_models--long}, for the BPL model. The parameters used for plotting are given in Table \ref{tab:BPL_model_parameters--long}.}
+\label{fig:bestfit_BPL_models--long}
+\end{center}
+\end{figure}
+
+
+Since the constant in the RHS of Equation \ref{eq:fB.C_of_z--long} is not known a priori, it is calculated via the solutions of the models. It is known that for \f, $T \sim 8.5$ yr and for \s, $T \sim 12$ yr. I assume $\frac{\Delta \Omega}{4 \pi} \sim \frac{1}{3}$ for \f\ and $\frac{1}{10}$ for \s, to get ratios of the observed and modelled numbers, which are converted to get
+
+\begin{equation}
+\fB C(0) = \begin{cases}
+0.981 \times 10^{-8} \, \Msun^{-1}, & \f,\\
+1.022 \times 10^{-8} \, \Msun^{-1}, & \s.
+\end{cases}
+\label{eq:fB.C_of_zero_ECPL--long}
+\end{equation} for the ECPL model, and
+
+\begin{equation}
+\fB C(0) = \begin{cases}
+0.597 \times 10^{-8} \, \Msun^{-1}, & \f,\\
+0.653 \times 10^{-8} \, \Msun^{-1}, & \s.
+\end{cases}
+\label{eq:fB.C_of_zero_BPL--long}
+\end{equation} for the BPL model. In \cite{Paul-2018-MNRAS--long} [hereafter \citetalias{Paul-2018-MNRAS--long}], the numbers are $4 \pi$ greater than this because of a human error in calculating the normalization. Combining all the ranges, one gets
+\begin{equation}
+\fB C(0) = [0.597, 1.022] \times 10^{-8} \, \Msun^{-1},
+\label{eq:fB.C_of_zero--long}
+\end{equation} which is slightly lower than $2.4 \times 10^{-8} \, \Msun^{-1}$ as quoted in \citetalias{Tan_et_al.-2013-ApJL}. However it is to be noted that since they have not provided any uncertainties on their numbers, any reasonable comparison is impossible. When multiplied with $\csfr(0)$, one can constrain the LGRB formation rate in the local universe to
+\begin{equation}
+\Rdot(0) = [0.12, 0.20] \, \pyG.
+\label{eq:Rdot0--long}
+\end{equation} \citetalias{Amaral-Rogers_et_al.-2017-MNRAS} has constrained $\Rdot(0)$ to $[0.04, 0.24] \, \pyG$. My constraints are thus more tighter.
+
+The ECPL shows agreement with the most recent work of \citetalias{Amaral-Rogers_et_al.-2017-MNRAS}. The BPL model shows a sharp change at its break, which itself evolves quite strongly with redshift as $\Lb \sim 0.3 \times 10^{52} \, \ergpersec (1+z)^{2.90}$, in general agreement with \citetalias{Amaral-Rogers_et_al.-2017-MNRAS}. The GRB formation rate for a given star-formation rate decreases with increasing redshift as $\fB C \propto (1+z)^{-0.80}$ [the normalization is given by Equation \ref{eq:fB.C_of_zero--long}], in agreement to the reports of \citetalias{Tan_et_al.-2013-ApJL}. Whereas the ECPL automatically takes into account the variation of the break, this needs to be incorporated via  strong evolutions with redshift in the BPL model. However, it is not possible to distinguish between the two models based on the fits. One of the reasons is that the data are generally over-fitted due to the large uncertainties, and another possible reason being that the discrepancies between data and model could be a result of the complex nature of detection probabilities of the instruments, which I have not attempted to model directly.
+
+It is to be noted that the present work is empirical; it does not attempt to provide an understanding of the models used, nor of the derived values of the parameters. A thorough understanding of the observed GRB number distribution requires one to justify the models via the phenomenology of long GRBs, taking into consideration the beaming of GRB jets and the GRB formation environment. This is the scope of future work.
+
+
+
+\section{Predictions for \AS, \A, and \D}
+\label{sec:predictions--long}
+
+\subsection{\AS-CZTI}
+\label{subsec:predictions_for_CZTI--long}
+The CZT Imager or CZTI \citep{Bhalerao_et_al.-2017-JApA}, on the Indian multi-wavelength observatory \AS\ \citep{Rao_et_al.-2016-arXiv-Astrosat} is capable of detecting transients at wide off-axis angles, localizing them to a few degrees, and carrying out spectroscopic and polarization studies of GRBs, as demonstrated in \cite{Rao_et_al.-2016-ApJ}. A preliminary analysis done with the weakest GRB detected by CZTI suggests that it is at least as sensitive as \f, which detects roughly $3$ times the number of GRBs per year compared to \s. Similar to \f, the CZTI is also a wide-field detector. Moreover, it covers a wide energy range, being the most sensitive between $50$ and $200$ keV. Thus, it is reasonable to assume that its GRB detection rate is at least comparable to that of \s. Assuming this, I make predictions for CZTI over the redshift bins that were chosen for \f. The best-fit ECPL model predicts that CZTI should detect $150$ GRBs per year. The best-fit BPL model predicts detection-rate of around $140$ GRBs per year, with the \f\ equipopulous redshift bins almost equipopulous for CZTI as well. In $\sim 1.3$ years of operation, $\sim 100$ GRBs has been detected by CZTI by triggered searches alone\footnote{See a comprehensive list at \url{http://astrosat.iucaa.in/czti/?q=grb}.}, however the exact number is subjective. An automated algorithm to detect GRBs is being thoroughly tested and implemented, the details of which will be reported elsewhere. In the view of this, the predictions point out the fact $\sim 20$-$30$ GRBs are yet undiscovered from the CZTI data.
+
+\subsection{Soft X-ray instruments}
+\label{subsec:predictions_for_soft_Xray_instruments--long}
+In this section I will describe work done after the publication of \citetalias{Paul-2018-MNRAS--long}, inspired by looking at the GRB-detection capabilities of the future ESA mission \A\footnote{\url{https://www.the-athena-x-ray-observatory.eu/}}, and also an Indian GRB-dedicated mission currently in the planning stage [PI: Professor Varun Bhalerao, IIT-Bombay], called the \D. \A\ will have a soft X-ray detector on-board, called the `Wide Field Imager' [WFI] that will have excellent timing capabilities, and improved detection sensitivity compared to previous soft X-ray missions like \X\, and \C. In view of this, it becomes important to answer the following question? How many LGRBs will \A -WFI detect per year? One would like to see if the number is significantly larger than that possible by \X\, and \C. Hence, the predictions of the detection rate of ``typical'' LGRBs, i.e. those with $10$ s durations were made assuming the characteristics of the instruments as detailed below.
+
+\begin{itemize}
+\item \X: EPIC-PN is the go-to instrument because the others [EPIC-MOS and RGS] do not have timing capabilities\footnote{\url{https://xmm-tools.cosmos.esa.int/external/xmm_user_support/documentation/uhb/epicmode.html}}. For this instrument, different sensitivities are quoted for the different energy ranges\footnote{\url{https://xmm-tools.cosmos.esa.int/external/xmm_user_support/documentation/uhb/epicsens.html}}, but for the purpose of GRBs, one can limit themselves to the ``hard'' to ``very hard'' range of $2$-$10$ keV with a sensitivity of $\sim 10^{-14} \, \ergpercmsqpersec$ for a $1$ Ms [$= 10^{6}$ s] observation, translating to a $10$ s sensitivity of $\sim 10^{-9} \, \ergpercmsqpersec$ [$s \propto t$\footnote{\url{https://xmm-tools.cosmos.esa.int/external/xmm_user_support/documentation/uhb/epicsens.html}}]. The field-of-view [FOV] is $33' \times 33'$\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/xmm/xmm.html}}.
+
+\item \C: For ACIS, the temporal resolution is poor or else there is severe compromise on positional information\footnote{\url{http://cxc.harvard.edu/cal/Acis/index.html}}. [The sensitivity is $\sim 10^{-13} \, \ergpercmsqpersec$ for $10^{3}$s, which translates to $\sim 10^{-11} \, \ergpercmsqpersec$ for $10$ s.] Hence I only consider HRC, for which time resolution is reasonable\footnote{\url{http://cxc.harvard.edu/cal/Hrc/index.html}}. For HRC-I, the bandwidth is $0.08$-$10$ keV, and FOV is $30' \times 30'$. For $10^{3}$ s, the sensitivity is $\sim 10^{-13} \, \ergpercmsqpersec$ (\C\, Proposers Observatory Guide, Page 130, Figure 7.11), which for $10$ s becomes $\sim 10^{-11} \, \ergpercmsqpersec$, two orders better than \X /EPIC-pn. Although HRC-S has much better temporal-resolution [and similar bandwidth but FOV of $6' \times 30'$], its ACS is not functional, hence only HRC-I was considered.
+
+\item \A: The \A -WFI will have an energy range of $0.3$-$15$ keV, and a FOV of $40' \times 40'$, largest amongst the three. The scaled $10$ s sensitivity is $2 \times 10^{-12}$, better than even \C -HRC-I.
+\end{itemize}
+
+The sensitivity for all the instruments are shown in Figure \ref{fig:sensitivity_plots_for_soft_and_hard_instruments}, \eL. The combined predictions of the BPL and ECPL models, including uncertainties, are given in Table \ref{tab:predictions_for_soft_X-ray_instruments}.
+
+
+\begin{table}
+\caption[Long GRB detection rates by soft X-ray instruments]{Estimations and predictions of typical LGRB detection rates by the past, present and future soft X-ray instruments, combining the BPL and ECPL models and including uncertainties for both the models.}
+\label{tab:predictions_for_soft_X-ray_instruments}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+Instrument & Predicted numbers\\
+ & [$\py$]\\
+\hline
+\hline
+\X /EPIC-pn & $11$-$13$\\
+\hline
+\C /HRC-I & $10$-$14$\\
+\hline
+\A /WFI & $16$-$20$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{sensitivity_plot--with_Swift_and_CZTI}
+\includegraphics[scale=0.42]{sensitivity_plot--soft_Xray_instruments}
+\caption[Sensitivity of several detectors to long GRBs]{\eL: The sensitivity for a ``typical'' long GRB [$10$ s] of the soft X-ray instruments compared to existing hard X-ray instruments; \eR: compared to both the proposed soft and hard X-ray instruments on \D.}
+\label{fig:sensitivity_plots_for_soft_and_hard_instruments}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{predictions--long--BPL}
+\includegraphics[scale=0.42]{predictions--long--ECPL}
+\caption[Predictions for the luminosity distributions for several GRB detectors]{Predictions for the luminosity distribution of the long GRBs observed by different soft-X-ray instruments by the BPL model, on the \eL; and by the ECPL model for the two the instruments on \D, on the \eR.}
+\label{fig:N(L)_for_soft_Xray_instruments}
+\end{center}
+\end{figure}
+
+The above results [distributions for the BPL model shown in Figure \ref{fig:N(L)_for_soft_Xray_instruments}, \eL] assume that the full time devoted to the \X\, and \C\, observatories were used in the modes suitable for observations through the EPIC-pn and HRC-I respectively. However, that is definitely not the case in practice. Taking the corresponding fraction into account, the predicted numbers will at least be halved, hence there will not be much gain in recovering these GRBs from the archival data. Similarly in \A /WFI, the number of GRBs detectable by it completely depends on how much time is allotted to WFI in the fast-timing mode. The situation is not very encouraging either. The reason for it is simple: the wavelength ranges available to the soft X-ray instruments are not suitable for detecting long GRBs, as will be clear from taking a look at the $k$-corrections as plotted in Figure \ref{fig:k_corrections_for_long_GRBs}, which includes the soft and hard X-ray instruments for the future Indian GRB-detector \D, and described in Section \ref{subsec:predictions_for_Daksha--long}.
+
+\begin{checkit}
+This investigation was carried out in collaboration with Dr. Pragati Pradhan and Professor David Burrows of Pennsylvania State University, State College, Pennsylvania, the USA. The results were communicated to them along with the details. %See Chapter \ref{chap:prospects} for a follow-up investigation.
+\end{checkit}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{k_correction--long--soft_Xray_instruments_and_Dakshas}
+\caption[$k(z)$ of several GRB detectors]{$k(z)$ for the different soft X-ray instruments -- current, in-line, and proposed -- along with the proposed hard X-ray detector on-board \emph{Daksha}. The \emph{Fermi}-GBM curve is drawn for a reference, along with an ``ideal'' instrument [dashed grey line] that has unit k-correction for all instruments.}
+\label{fig:k_corrections_for_long_GRBs}
+\end{center}
+\end{figure}
+
+
+\subsection{\D}
+\label{subsec:predictions_for_Daksha--long}
+This instrument has been proposed by Professor Varun Bhalerao of the Indian Institute of Technology [IIT], Bombay, India. It is currently in the planning phase. It will have a soft X-ray detector operating in the energy range of $1$-$10$ keV, in addition to a hard X-ray detector sensitive to $20$-$200$ keV. The sensitivity for both the instruments are shown in Figure \ref{fig:sensitivity_plots_for_soft_and_hard_instruments} \eR, as well as given in Table \ref{tab:predictions_for_Daksha--long}, along with the predictions of the LGRB detection rate combined for the BPL and ECPL models, including uncertainties.
+
+\begin{table}[!htbp]
+\caption[Specifications and long GRB detections estimates for \D]{The wavelength-coverage and sensitivities of the two instruments on \D\ for typical LGRBs, and predictions of their detection rates combining the BPL and ECPL models and including uncertainties for both the models.}
+\label{tab:predictions_for_Daksha--long}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+Wavelength range & Sensitivity & Predicted numbers\\
+{[keV]} & [$\ergpercmsqpersec$] & [$\py$]\\
+\hline
+\hline
+$1$-$10$ & $0.3 \times 10^{-8}$ & $210$-$246$\\
+\hline
+$20$-$200$ & $1.7 \times 10^{-8}$ & $229$-$274$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The primary reason that the numbers for the soft X-ray instrument for \D\ are not as low as that of \X, \C, and \A, is its comparatively much larger FoV, technically the full-sky. Corrected for the SAA-passage [equatorial orbit] and earth occultations [low-earth orbit, like \AS], it is $\frac{\Delta \Omega}{4\pi} \sim \frac{1}{2}$. The luminosity distributions for the ECPL model are shown in Figure \ref{fig:N(L)_for_soft_Xray_instruments}, \eR.
+
+\begin{checkit}
+This investigation was carried out in collaboration with Professor Varun Bhalerao of the Indian Institute of Technology [IIT], Bombay, India, and the results were communicated to him along with the details.
+\end{checkit}
+
+
+
+
+
+\section{Prospect of TDE science with \A-WFI}
+\label{sec:prospects}
+Driven by the negative prospects of observing GRBs with \A -WFI [see Section \ref{subsec:predictions_for_soft_Xray_instruments--long}], we ask the following question instead: What is the prospect of \A -WFI to observe Tidal Disruption Events [TDEs]?
+
+We first note that there are many issues with TDE science:
+\begin{enumerate}
+\item It is difficult to identify TDEs. In the optical wavelengths, it is difficult to distinguish them from supernovae. Even amongst so-called confirmed TDE candidates, there is no uniformity in the slope of the lightcurve [which may vary for a given TDE], or their spectral properties. Subsequently, multiple claims have been made that a certain extragalactic source is a TDE candidate via purely spectral fits, but there is no confirmation as such for these sources. On the other hand, theoretical studies claim that a good fraction of TDEs [$\sim 10 \%$] of AGN activity is due to TDEs; that the TDE-AGN activities span a continuous spectrum than a discrete difference in observables.
+
+\item The intrinsic number of TDEs are much smaller than other transients [like GRBs]: $10^{-5}$-$10^{-4}$ per year per galaxy \citep{Auchettl_et_al.-2018-ApJ}. This is significantly lower than the progenitor mass available for GRBs, for example.
+\end{enumerate}
+
+As such, severe instrumental effects are present in the sample of the TDEs themselves. There are around $70$ TDE candidates \citep{Auchettl_et_al.-2017-ApJ}, out of which a significant fraction may not be TDEs. Confirmed TDEs counts is $\sim 20$ in all these years of observation. Here is where an instrument with the probability of detection of $1$ TDE per year may make a significant impact to the TDE science. Roughly, the TDE ``activity'' time is $\sim \frac{1}{3}$ year, so follow-up of the same TDE in different wavelengths, and hence being able to confirm the fact that it is a TDE, is important yet observationally not expensive for such an instrument. Currently, TDEs have been observed either at optical wavelengths, or at soft X-rays. Aside the current optical surveys, a good soft X-ray monitor has the capability of increasing the TDE sample. \emph{MAXI} is a wide-field soft X-ray monitor which has detected 4 TDEs in 37 months of data \citep{Kawamuro_et_al.-2016-PASJ}. Other important instruments have been \s -XRT and the XMM-Newton slew survey. The luminosity function [mathematical definition different from the GRB case, although in the same spirit] has been studied by both \cite{Kawamuro_et_al.-2016-PASJ} and in much more detail by \cite{Auchettl_et_al.-2018-ApJ}. Whereas the former is severely limited by the low statistics of the sample, the latter somewhat alleviates this problem. The selection effects at different luminosities, however, cannot be mitigated. Acknowledging these effects, they have still been able to make some important statements:
+
+\begin{itemize}
+\item At $\LX < 10^{44} \, \ergpersec$, the contribution of both jetted and non-jetted TDEs to the AGN LF is significant, specially at low redshifts [$z < 0.4$], in line with theoretical predictions \citep{Milosavljevic_et_al.-2006-ApJ}. However at higher redshifts the contribution becomes less significant.
+
+\item The observed TDE LF has virtually no contribution from the non-jetted TDEs at $\LX > 10^{44} \, \ergpersec$, as also expected theoretically [from the BH mass limit].
+
+\item The observed TDE LF flattens for both the jetted and non-jetted TDEs, thus deviating from the theoretical predictions, for $\LX \sim 10^{40}$-$10^{42} \, \ergpersec$, which is mostly likely an observational artifact. The TDEs supposed to populate this region can be explained by the ``veiled'' TDEs \citep{Auchettl_et_al.-2017-ApJ}.
+
+\item The overall behaviour points to the fact that the observed TDE LFcould very well converge to the theoretical prediction, with future observations. This has an important consequence, as discussed below.
+\end{itemize}
+
+The intrinsic TDE source rate derived from the said theoretical study implies a significantly higher rate of stellar disruptions near central supermassive black holes, than those inferred from observations in the optical/UV. This raises another important question: Is the rate of TDEs inferred from optical/UV studies an order of magnitude smaller than those from X-ray observations?
+
+If the above is true, then the prediction for the observable rate for any soft X-ray instrument can increase by a factor of $10$. This is supported by the recent finding of \cite{Tadhunter_et_al.-2017-NatAst}.
+
+Taking all these into account, it can be argued that if a particular instrument can detect and follow-up $1$ TDE $\py$, it can significantly impact the field. Not only that, it can alleviate the instrumental selection effects at the $10^{40}$-$10^{42} \, \ergpersec$ plateau, if sensitive at an energy range that may pick up TDEs with such luminosities. Ideally, one would like a wide-field soft X-ray monitor. A trade-off might be obtained by having an instrument with much better sensitivity but lower FoV. Such an instrument is \A -WFI. It has the potential to significantly impact this field if the number of galaxies it can survey is around $10^3$-$10^4$ times larger than the current instruments.
+
+For focussing instruments on-board \X, \C, \A, the sensitivity scales with time as $t^{-1}$. As for TDEs, the time to be taken for integration is uncertain. But since WFI is an instrument that will not be staring at the same field for months, it is safe to assume that the sensitivity will be maximum two order higher than that for GRBs. Taking into effect the mass and luminosity function of galaxies \citep{Conselice_et_al.-2016-ApJ}, and given that the intrinsic TDE rate is much smaller \citep{Auchettl_et_al.-2018-ApJ}, the number of galaxies available for survey will not be enough for WFI to make any significant stride in this field.
+
+There is another criticism against WFI as a TDE detector: Even though it is going to observe deeply when it its narrow FoV, without having an existing catalogue of the steady sources in that field from a previous survey, it will be impossible to understand whether a given source is a steady source or a transient. This problem does not arise for GRBs because the prompt emission of GRBs are really short [maximum around $100$ s] and extremely significant [at least for LGRBs], but a large number of TDEs are still confused with supernovae as these two classes behave similarly, both temporally and spectroscopically. Only if e-ROSITA can survey deeper than WFI and complete the full-sky catalogue before WFI starts observing, will it be practically possible to pitch WFI as a TDE detector.
+
+\begin{checkit}
+The results from this literature survey and basic calculations were communicated to Professor David Burrows and Dr. Pragati Pradhan of the Pennsylvania State University, State College, Pennsylvania, the USA.
+\end{checkit}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Conclusions}
+\label{sec:conclusions--LGRBs}
+Previously, \B\ and \s\ GRBs have been used to constrain the GRB luminosity function. Only a few \B\ GRBs had redshift measurements, so indirect methods were used to study the luminosity function of these GRBs. On the other hand, about $30 \%$ of the \s\ GRBs have redshift measurements. However, the measurement of the spectral parameters are also crucial to the measurement of the luminosity, via the $k$-correction factor. Being limited in the energy coverage, estimates of the \s\ spectral parameters have large uncertainties. Moreover, the number of \s\ GRBs with redshift measures are not as large as the entire \B\ sample. \f\ is a GRB detector with large sky coverage, a detection rate roughly $3$ times more than \s, and wide energy coverage, thus measuring the broad-band spectrum of a large fraction [$\sim 75 \%$] of the detected GRBs to sufficient accuracy. However, its poor localisation capabilities makes it impossible to make \s-like follow up observations, and hence the measurement of redshifts.
+
+In this work, I show that one of the methods proposed to solve the absence of redshift measures for \B\ GRBs can be used self-consistently to estimate the luminosities of \s\ and \f\ GRBs without redshift measurements. This method works on the premise that the `Yonetoku correlation' is applicable to all GRBs. For this, I have first used the most updated common sample of $66$ long GRBs detected by these two instruments, to re-derive the parameters of this correlation. By a careful study of the discrepancies, I find a significant trend between the ratio of the observed and predicted luminosities with the measured redshift. The exact reason for this trend is not clear, but it highlights the fact that the weakness of the correlation is intrinsic, being driven by physical effects and not measurement uncertainties. I conclude that although the large scatter in the Yonetoku correlation rules out the possibility of using GRBs as distance-indicators, the statistical distribution of observed redshifts is reproduced well, and there is no need to modify the extraction of the correlation parameters as has been suggested previously \citepalias{Tan_et_al.-2013-ApJL}.
+
+Next, the method is shown to self-consistently predict `pseudo redshifts' of all long GRBs without redshift measurements. This allows calculation of the luminosities of a total of $2067$ GRBs from these instruments, including the subsample [of $66$ bursts] that has direct measurements of both redshift and spectra. I then use this large sample to model the GRB luminosity function, and place constraints on two models. The GRB formation rate is assumed to be a product of the cosmic star formation rate and a GRB formation efficiency for a given stellar mass. Whereas an exponential cut-off powerlaw model does not require a cosmological evolution, a broken powerlaw model requires strong cosmological evolution of both the break as well as the GRB formation efficiency [degenerate upto the beaming factor of GRBs]. This is the first time \f\ GRBs have been used independent of measured redshifts from \s\ to study the long GRB luminosity function. Moreover, this is the first time such a large sample of \s\ GRBs have been used. The use of the large sample of \f\ GRBs helps in placing sufficient confidence on the derived parameters of the broken powerlaw model, when \s\ GRBs alone suffer from degeneracies and observational biases. Comparison with recent studies shows reasonable agreement for both the models, however it is not possible to distinguish between them.
+
+\citetalias{Amaral-Rogers_et_al.-2017-MNRAS} has proposed on increasing the sample of LGRBs by taking individual pulses of the same bursts as physically separate entities. In the future, perhaps a conglomeration of their method with the one here can be implemented to increase the sample size even further, to further test the parameters of the models and also carry out an in-depth analysis of the detection probabilities of the two instruments, which is presently quite a daunting task. This work also does not attempt to provide a physical understanding of the empirical models or the parameter values derived, which should be addressed in future works.
+
+Finally, I have used the derived models as templates to make predictions about the detection rate of long GRBs by various instruments. The predictions for \AS -CZTI are encouraging for the ongoing efforts of the collaboration. The quick localisation of the few bursts that are predicted to be detected only by CZTI can increase the GRB database even further, and reveal interesting answers about the GRB phenomenon in both the local and the distant universe. The Indian mission \D\ also has great prospects as a GRB-detector. However, the scenario is not bright for past, present and even future soft X-ray [$< 15$ keV] telescopes, even with the improvement of sensitivity. The reason for that is simple: there are just not enough GRBs which peak at such soft energies. As an extension, the prospects of \A -WFI, a future soft X-ray detector, as a detector of tidal disruption events is also considered, and the results are not promising.

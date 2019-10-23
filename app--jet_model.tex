@@ -1,0 +1,25 @@
+Here we lead the interested reader to the deduction of Equation \ref{eq:C_3} from Equation \ref{eq:C_3_double_integral} in the low-energy regime as discussed in the text.
+
+Firstly, we note that the integrand is even over $ \psi, $ hence it can be written as
+\begin{equation}
+C_3(p) = 2 \int_{0}^{1}d\psi\, T(\psi),
+\label{eq:C_3_from_Tpsi}
+\end{equation}
+where
+\begin{equation}
+T(\psi) = \int_{0}^{\infty} d\xi \; \xi^{3/2} \left[ 1 - \exp \left\{ -\xi^{-\frac{p+4}{2}}\left(1-\psi^{2}\right)^{1/2} \right\} \right],
+\end{equation}
+which formally diverges. However, the divergences can be shown to cancel, by defining the upper-limit to be $q$ and taking the limit of $ q \rightarrow \infty , $ i.e.
+\begin{equation}
+T(\psi) = \lim_{q \to \infty} \int_{0}^{q }d\xi \; \xi^{3/2} \left[ 1 - \exp \left\{ -\xi^{-\frac{p+4}{2}}\left(1-\psi^{2}\right)^{1/2} \right\} \right],
+\end{equation}
+and carrying out the above integral by parts, with $ \xi^{3/2} $ being `taken out' of the integral, which yields
+\begin{eqnarray}
+T(\psi) & = & \frac{p+4}{5} (1-\psi^2)^{1/2} \int_{0}^{\infty}d\xi\,\xi^{-\frac{p+1}{2}} \exp \left\{ -\xi^{-\frac{p+4}{2}}\left(1-\psi^{2}\right)^{1/2} \right\} \\
+ & = & \frac{2}{5} (1-\psi^2)^{ \frac{5}{2(p+4)} } \int_{0}^{\infty}du \, u^{ \frac{p-1}{p+4} } \, e^{-u},
+\end{eqnarray}
+the last step being obtained by the substitution $ u = \xi^{ - \frac{p+4}{2} } (1-\psi)^{1/2} , $ to give
+\begin{equation}
+T(\psi) = \frac{2}{5} (1-\psi^2)^{ \frac{5}{2(p+4)} } \Gamma\left( \frac{p-1}{p+4} \right),
+\end{equation}
+which can be finally plugged into Equation \ref{eq:C_3_from_Tpsi} to obtain the final result.
