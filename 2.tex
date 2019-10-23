@@ -1,0 +1,371 @@
+\documentclass[12pt, % The default document font size, options: 10pt, 11pt, 12pt
+%oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+%chapterinoneline,% Have the chapter title next to the number in one single line
+english, % ngerman for German
+singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+2%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+%liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+%toctotoc, % Uncomment to add the main table of contents to the table of contents
+%parskip, % Uncomment to add space between paragraphs
+%nohyperref, % Uncomment to not load the hyperref package
+headsepline, % Uncomment to get a line under the header
+]{MastersDoctoralThesis} % The class file specifying the document structure
+
+
+\graphicspath{ {images/} }
+
+\providecommand{\tabularnewline}{\\}
+\sloppy
+
+
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{graphicx}
+\usepackage{aas_macros}
+\usepackage{amsmath}
+\usepackage{stackrel}
+\usepackage{amssymb}
+\usepackage{txfonts}
+\usepackage[authoryear]{natbib}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage[colorlinks=true, citecolor=blue]{hyperref}
+\usepackage{palatino} % Use the Palatino font
+\usepackage{tabto} 
+\usepackage{url}
+\usepackage{afterpage}
+\onehalfspacing
+
+\hypersetup{linktocpage} % For linking the bookmarks to page numbers in Tables of Contents, Figures, Tables, Publications etc.
+\hypersetup{colorlinks,linkcolor=blue}
+
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+
+
+
+
+\definecolor{checkcolor}{rgb}{0.75, 0.75, 0.75}
+\newsavebox{\definitionbox}
+\newenvironment{checkit}{
+\begin{lrbox}{\definitionbox}
+\begin{minipage}[t]{0.90\textwidth}
+}
+{\end{minipage}\end{lrbox}
+\begin{center}{\colorbox{checkcolor}{\usebox{\definitionbox}}}
+\end{center}}
+
+
+
+
+
+\global\newcommand{\B}{BATSE}
+\global\newcommand{\grb}{GRB151006A}
+\global\newcommand{\s}{\emph{Swift}}
+\global\newcommand{\f}{\emph{Fermi}}
+\global\newcommand{\A}{\emph{Athena}}
+\global\newcommand{\D}{\emph{Daksha}}
+\global\newcommand{\C}{\emph{Chandra}}
+\global\newcommand{\bs}{\emph{BeppoSax}}
+\global\newcommand{\AS}{\emph{AstroSat}}
+\global\newcommand{\X}{\emph{XMM-Newton}}
+
+\global\newcommand{\ee}{E_0}
+\global\newcommand{\dd}{{\rm d}}
+\global\newcommand{\al}{allowable}
+\global\newcommand{\Ep}{E_{\rm p}}
+\global\newcommand{\Lp}{L_{\rm p}}
+\global\newcommand{\fsc}{\alpha_f}
+\global\newcommand{\keV}{\rm{keV}}
+\global\newcommand{\LX}{L_{\rm X}}
+\global\newcommand{\thr}{threshold}
+\global\newcommand{\T}{T_{\rm{90}}}
+\global\newcommand{\fB}{f_{\rm{B}}}
+\global\newcommand{\Lb}{L_{\rm{b}}}
+\global\newcommand{\Msun}{M_{\odot}}
+\global\newcommand{\M}{M_{\rm{sum}}}
+\global\newcommand{\eL}{\emph{Left}}
+\global\newcommand{\eR}{\emph{Right}}
+\global\newcommand{\ps}{{\rm s^{-1}}}
+\global\newcommand{\py}{{\rm yr^{-1}}}
+\global\newcommand{\gc}{gross\_cutoff}
+\global\newcommand{\Lbn}{L_{\rm{b,0}}}
+\global\newcommand{\Eps}{E_{{\rm p,0}}}
+\global\newcommand{\N}{N_{\rm{points}}}
+\global\newcommand{\Np}{N_{\rm{pairs}}}
+\global\newcommand{\tl}{t_{{\rm look}}}
+\global\newcommand{\mus}{{\rm \mu s}}
+\global\newcommand{\Rdot}{\overset{.}{R}}
+\global\newcommand{\Rcap}{\stackbin{.}{R}}
+\global\newcommand{\red}{\chi_{{\rm red}}^{2}}
+\global\newcommand{\pyG}{{\rm yr^{-1}Gpc^{-3}}}
+\global\newcommand{\ergpersec}{\rm erg \, s^{-1}}
+\global\newcommand{\csfr}{\overset{.}{\rho_{\star}}}
+\global\newcommand{\phpercmsqpersec}{\rm ph \, cm^{-2} \, s^{-1}}
+\global\newcommand{\ergpercmsqpersec}{\rm erg \, cm^{-2} \, s^{-1}}
+
+
+\defcitealias{Kouveliotou_et_al.-1993-ApJ}{K93}
+\defcitealias{Band_et_al.-1993-ApJ}{B93}
+\defcitealias{Bouwens_et_al.-2015-ApJ}{B15}
+\defcitealias{Yonetoku_et_al.-2004-ApJ}{Y04}
+\defcitealias{Amaral-Rogers_et_al.-2017-MNRAS}{AR17}
+\defcitealias{Tan_et_al.-2013-ApJL}{T13}
+\defcitealias{Paul-2018-MNRAS--long}{P18a}
+\defcitealias{Yonetoku_et_al.-2014-ApJ}{Y14}
+\defcitealias{Ghirlanda_et_al.-2016-A&A}{G16}
+\defcitealias{Tsutsui_et_al.-2013-MNRAS}{Ts13}
+\defcitealias{Guetta_and_Piran-2005-A&A}{GP05}
+\defcitealias{Guetta_and_Piran-2006-A&A}{GP06}
+\defcitealias{D'Avanzo_et_al.-2014-MNRAS}{DA14}
+\defcitealias{Coward_et_al.-2012-MNRAS}{C12}
+\defcitealias{Segreto_et_al.-2003-A&A--INTEGRAL_cosmic_rays}{S03}
+\defcitealias{Blandford_&_Konigl-1979-ApJ}{BK79}
+\defcitealias{Beams_and_jets}{Cawthorne (1991)}
+\defcitealias{Ziolkowski-2014-MNRAS}{Zi14}
+\defcitealias{Stirling_et_al.-2001-MNRAS}{S01}
+\defcitealias{Orosz_et_al.-2011-ApJ}{O11}
+\defcitealias{Zdziarski-2012-MNRAS-Radio_modulation_CX1}{Zdziarski, 2012}
+\defcitealias{Zdziarski_et_al.-2012-MNRAS-MeV_tail_CX1}{Z12}
+\defcitealias{Heinz-2006-ApJ}{Heinz, 2006}
+\defcitealias{Longair-3rd_Ed.}{Longair, 2011}
+\defcitealias{Rybicki_&_Lightman}{Rybicki and Lightman (1979)}
+
+\geometry{
+	paper=a4paper, % Change to letterpaper for US letter
+	inner=1.0in, % Inner margin
+	outer=1.0in, % Outer margin
+	bindingoffset=2cm, % Binding offset
+	top=1.5cm, % Top margin
+	bottom=1.5cm, % Bottom margin
+	%showframe, % show how the type block is set on the page
+}
+
+
+
+
+
+%\sloppy
+\begin{document}
+
+
+
+\frontmatter
+\pagestyle{plain}
+
+
+\begin{titlepage}
+\begin{center}
+{\centerline {\bf {\Huge Gamma Ray Bursts in the \AS -CZTI era}}}
+\vskip 2cm
+{\centerline {\textsc{\Large A Thesis}}}
+\vskip 2cm
+{\centerline {\Large Submitted to the}}
+\vskip 0.2cm
+{\centerline {\Large Tata Institute of Fundamental Research, Mumbai}}
+\vskip 0.2cm
+{\centerline {\Large for the degree of Doctor of Philosophy}}
+\vskip 0.2cm
+{\centerline {\Large in Physics}}
+\vskip 1.5cm
+{\centerline {\Large by }}
+\vskip .7cm
+{\centerline {\textsc{\Large Debdutta Paul}}}
+\vskip 2.5cm
+{\centerline {\Large School of Natural Sciences}}
+\vskip 0.2cm
+{\centerline {\Large Tata Institute of Fundamental Research}}
+\vskip 0.2cm
+{\centerline {\Large Mumbai}}
+\vskip 0.2cm
+{\centerline {\Large April, 2019}}
+\vskip 0.4cm
+{\centerline {\Large Final version submitted in \textemdash, 2019}}
+\end{center}
+\end{titlepage}
+
+
+
+
+%\begin{declaration}
+%%\addchaptertocentry{\authorshipname}
+%\vskip 1cm
+%\noindent This thesis is a presentation of my original research work. Wherever contributions of others are involved, every effort is made to indicate this clearly, with due reference to the literature, and acknowledgement of collaborative research and discussions.\\
+%\noindent The work was done under the guidance of Professor A R Rao, at the Tata Institute of Fundamental Research, Mumbai.
+%\vskip 3cm
+%\begin{flushright}
+%\textbf{DEBDUTTA PAUL}
+%\end{flushright}
+%\begin{flushright}
+%%{\bf [Candidate's name and signature]}
+%\end{flushright}
+%\vskip 1.5cm
+%\noindent In my capacity as supervisor of the candidate's thesis, I certify that the above statements are true to the best of my knowledge.
+%\vskip 3cm
+%\begin{flushleft}
+%\textbf{Professor A R RAO}
+%\end{flushleft}
+%\begin{flushleft}
+%%{\bf [Guide's name and signature]}
+%\end{flushleft}
+%\vskip 0.5cm
+%\noindent Date:
+%\end{declaration}
+%\cleardoublepage
+
+\begin{declaration}
+\begin{figure}
+\includegraphics[scale=0.55]{scanned_Declaration}
+\thispagestyle{empty}
+\end{figure}
+\end{declaration}
+\cleardoublepage
+
+
+\begin{acknowledgements}
+%\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+\input{chapters/acknowledgements}
+\end{acknowledgements}
+
+
+\dedicatory{To Professor Asok Kumar Das, (retired, Scottish Church College,) Kolkata, for showing me that beauty lies in truth, and happiness in objective thinking.}
+
+
+
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\begin{abbreviations}{ll} % A table of two columns
+\textbf{Athena} & \textbf{A}davanced \textbf{T}elescope for \textbf{H}igh \textbf{E}nergy \textbf{A}strophysics\\
+\textbf{BAT} & \textbf{B}urst \textbf{A}lert \textbf{T}elescope\\
+\textbf{BATSE} & \textbf{B}urst \textbf{A}nd \textbf{T}ransient \textbf{S}ource \textbf{E}xperiment\\
+\textbf{BH} & \textbf{B}lack \textbf{H}ole\\
+\textbf{BNSM} & \textbf{B}inary \textbf{N}eutron \textbf{S}tar \textbf{M}erger\\
+\textbf{BPL} & \textbf{B}roken \textbf{P}ower \textbf{L}aw\\
+\textbf{CAM} & \textbf{C}oded \textbf{A}perture \textbf{M}ask\\
+\textbf{CGRO} & \textbf{C}ompton \textbf{G}amma \textbf{R}ay \textbf{O}bservatory\\
+\textbf{CSFR} & \textbf{C}osmic \textbf{S}tar \textbf{F}ormation \textbf{R}ate\\
+\textbf{CPM} & \textbf{C}harged \textbf{P}article \textbf{M}onitor\\
+\textbf{CZTI} & \textbf{C}admium \textbf{Z}inc \textbf{T}elluride \textbf{I}mager\\
+\textbf{DDH} & \textbf{D}etector \textbf{D}elay \textbf{H}istogram\\
+\textbf{DPH} & \textbf{D}etector \textbf{P}lane \textbf{H}istogram\\
+\textbf{ECPL} & \textbf{E}xponential \textbf{C}utoff \textbf{P}ower \textbf{L}aw\\
+\textbf{EM} & \textbf{E}lectro\textbf{m}agnetic\\
+\textbf{FOV} & \textbf{F}ield \textbf{O}f \textbf{V}iew\\
+\textbf{GBM} & \textbf{G}amma-ray \textbf{B}urst \textbf{M}onitor\\
+\textbf{GRB} & \textbf{G}amma \textbf{R}ay \textbf{B}ursts\\
+\textbf{GW} & \textbf{G}ravitational \textbf{W}aves\\
+\textbf{INTEGRAL} & \textbf{Inte}rnational \textbf{G}amma-\textbf{R}ay \textbf{A}strophysics \textbf{L}aboratory\\
+\textbf{IPN} & \textbf{I}nter-\textbf{P}lanetary \textbf{N}etwork\\
+\textbf{KAGRA} & \textbf{KA}mioka \textbf{GRA}vitational-wave detector\\
+\textbf{LAXPC} & \textbf{L}arge \textbf{A}rea \textbf{X}-ray \textbf{P}roportional \textbf{C}ounter\\
+\textbf{LF} & \textbf{L}uminosity \textbf{F}unction\\
+\textbf{LH} & \textbf{L}ivingston-\textbf{H}anford\\
+\textbf{LHV} & \textbf{L}ivingston-\textbf{H}anford-\textbf{V}irgo\\
+\textbf{LHVKI} & \textbf{L}ivingston-\textbf{H}anford-\textbf{V}irgo-\textbf{K}AGRA-\textbf{I}ndia\\
+\textbf{LIGO} & \textbf{L}aser \textbf{I}nterferometer \textbf{G}ravitational-Wave \textbf{O}bservatory\\
+\textbf{NS} & \textbf{N}eutron \textbf{S}tar\\
+\textbf{PICsIT} & \textbf{Pi}xelated \textbf{C}e\textbf{s}ium \textbf{I}odide \textbf{T}elescope\\
+\textbf{SAA} & \textbf{S}outh \textbf{A}tlantic \textbf{A}nomaly\\
+\textbf{SED} & \textbf{S}pectral \textbf{E}nergy \textbf{D}istribution\\
+\textbf{SNR} & \textbf{S}ignal-to-\textbf{N}oise \textbf{R}atio\\
+\textbf{SPL} & \textbf{S}imple \textbf{P}ower \textbf{L}aw\\
+\textbf{SXT} & \textbf{S}oft \textbf{X}-ray \textbf{T}elescope\\
+\textbf{TDE} & \textbf{T}idal \textbf{D}isruption \textbf{E}vent\\
+\textbf{UVIT} & \textbf{U}ltra-\textbf{V}iolet \textbf{I}maging \textbf{T}elescope\\
+\textbf{UVOT} & \textbf{U}ltra-\textbf{V}iolet/\textbf{O}ptical \textbf{T}elescope\\
+\textbf{WFI} & \textbf{W}ide \textbf{F}ield \textbf{I}mager\\
+\textbf{XMM} & \textbf{X}-ray \textbf{M}ulitmirror \textbf{M}ission\\
+\textbf{XRT} & \textbf{X}-\textbf{R}ay \textbf{T}elescope\\
+\\
+\textbf{aLIGO} & \textbf{a}dvanced \textbf{LIGO}\\
+\textbf{LGRB} & \textbf{L}ong \textbf{GRB}\\
+\textbf{SGRB} & \textbf{S}hort \textbf{GRB}\\
+\end{abbreviations}
+
+
+%\chapter{List of Publications}
+\chapter*{List of Publications}
+\input{chapters/publications}
+\cleardoublepage
+
+
+
+
+
+
+\mainmatter
+\pagestyle{thesis}
+
+
+\chapter{Introduction}
+\label{chap:introduction}
+\input{chapters/introduction--ver4}
+
+\chapter[Localisation of off-axis CZTI GRBs]{Localisation of off-axis Gamma Ray Bursts with \AS-CZTI}
+\label{chap:localisation}
+\input{chapters/localisation--ver2}
+	
+\chapter{Luminosity function of long GRBs}
+\label{chap:LGRBs}
+\input{chapters/LGRBs--ver2}
+
+\chapter{Luminosity function of short GRBs}
+\label{chap:SGRBs}
+\input{chapters/SGRBs--ver2}
+
+%\chapter{Prospects of TDE science with \A-WFI}
+%\label{chap:prospects}
+%\input{chapters/prospects--ver1}
+
+\chapter{Noise analysis of CZTI data}
+\label{chap:noise}
+\input{chapters/noise--ver2}
+
+\chapter{Partially self-absorbed synchrotron jets}
+\label{chap:jet_model}
+\input{chapters/jet_model--ver3}
+
+%\chapter{\texorpdfstring{GRB $\T$s as measured by \s\ and \f}{}}
+\chapter{GRB durations measured by \s\ and \f}
+\label{chap:ongoing}
+\input{chapters/ongoing--ver2}
+
+\chapter{Conclusions}
+\label{chap:conclusions}
+\input{chapters/conclusions--ver2}
+
+
+
+
+
+\appendix
+
+\chapter[Algorithm to detect `DPHstructures']{Algorithm to detect `DPHstructures'}
+\label{appendix:DPHstructures}
+\input{chapters/app--noise}
+
+\chapter[Derivation of Equation \ref{eq:C_3}]{Derivation of Equation \ref{eq:C_3}}
+\label{appendix:derivation_of_C3}
+\input{chapters/app--jet_model}
+
+
+
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{apj}
+\bibliography{debdutta}
+
+
+
+
+\end{document}
